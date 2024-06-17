@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:42:07 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/16 22:25:38 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/06/17 11:39:18 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,29 @@
 
 int	main(int argc, char **argv)
 {
-	t_game		*game;
-	int			fd;
+	t_mini_map	*game;
+	t_load_pos	var;
 
-	if (argc == 2)
+	var.i = 0;
+	var.j = 0;
+	var.x = 0;
+	var.y = 0;
+
+	
+	
+	game = NULL;
+	game = ft_mini();
+	game->mlx = mlx_init(512, 712, "CUBE 3D", true);
+	if (!game->mlx)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd == -1)
-			return (EXIT_FAILURE);
-		game = init_game(argv[1]);
-		game->mlx = mlx_init((game->width * 64), (game->height * 64), "CUBE 3D", false);
-		if (!game->mlx)
-		{
-			puts(mlx_strerror(mlx_errno));
-			return (EXIT_FAILURE);
-		}
+		puts(mlx_strerror(mlx_errno));
+		return (EXIT_FAILURE);
 	}
+	ft_arr_texture(game);
+	ft_texture_to_image(game);
+	ft_load_png(game, &var);
+	mlx_key_hook(game->mlx, &ft_player_moves, game);
+	mlx_loop(game->mlx);
+	return (EXIT_SUCCESS);
 }
+

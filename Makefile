@@ -9,7 +9,7 @@ INC_DIR 	= 	include
 SRCS_DIR    = 	src
 OBJS_DIR    = 	obj
 
-GAME	    =
+GAME	    =	images ft_player_moves ft_movement
 
 GARBAGE     =
 
@@ -19,7 +19,7 @@ MINI_MAP    =
 
 PARSING     =
 
-UTILS       =	copy_map init_glob_struct
+UTILS       =	copy_map init_mini_s ft_free
 
 SRCS        =   $(addsuffix .c, $(addprefix $(SRCS_DIR)/game/, $(GAME))) \
                 $(addsuffix .c, $(addprefix $(SRCS_DIR)/garbage/, $(GARBAGE))) \
@@ -37,8 +37,8 @@ LIBFT_INC = ${LIBFT_PATH}/include
 MLX_PATH = MLX42/build
 MLX_LIB = ${MLX_PATH}/libmlx42.a
 # Change this path for your homebrew path
-MLX_INC = -Iinclude -lglfw -L "/opt/homebrew/Cellar/glfw/3.3.8/lib"
-# MLX_INC = -Iinclude -lglfw -L "/Users/pnsaka/.brew/Cellar/glfw/3.4/lib"
+# MLX_INC = -Iinclude -lglfw -L "/opt/homebrew/Cellar/glfw/3.3.8/lib"
+MLX_INC = -Iinclude -lglfw -L "/Users/pnsaka/.brew/Cellar/glfw/3.4/lib"
 MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 
 GREEN	= \033[32;1m

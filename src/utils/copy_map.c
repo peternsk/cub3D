@@ -6,13 +6,13 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:13:49 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/16 00:15:21 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:58:30 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-bool	ft_arr_cpy(t_game *game)
+bool	ft_arr_cpy(t_mini_map *game)
 {
 	int	i;
 
