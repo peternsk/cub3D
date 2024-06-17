@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:42:07 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/17 11:48:30 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/17 11:49:34 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	
 	game = NULL;
 	game = ft_mini();
-	game->mlx = mlx_init(game->height, game->width, "CUBE 3D", true);
+	game->mlx = mlx_init(512, 712, "CUBE 3D", true);
 	if (!game->mlx)
 	{
 		puts(mlx_strerror(mlx_errno));
