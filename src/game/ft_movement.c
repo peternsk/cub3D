@@ -6,51 +6,51 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 19:17:38 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/17 10:48:34 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:58:30 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	move_check(t_mini_map *game, int x, int y)
+bool	move_check(t_mini_map *game, int x, int y)
 {
 	if (game->map[x][y] == '0')
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
 void	move_up(t_mini_map *game)
 {
-	if (move_check(game, game->player_x - 1, game->player_y))
+	if (move_check(game, game->player_x - 1, game->player_y) == false)
 	{
-		game->arr_img[PLAYER]->instances[0].y -= 2;
-		game->player_x--;
+		printf("== press up ==\n");
+		game->playr->instances[0].y -= 5;
 	}
 }
 
 void	move_down(t_mini_map *game)
 {
-	if (move_check(game, game->player_x + 1, game->player_y))
+	if (move_check(game, game->player_x + 1, game->player_y) == false)
 	{
-		game->arr_img[PLAYER]->instances[0].y += 2;
-		game->player_x++;
+		printf("== press down ==\n");
+		game->playr->instances[0].y += 5;
 	}
 }
 
 void	move_left(t_mini_map *game)
 {
-	if (move_check(game, game->player_x, game->player_y - 1))
+	if (move_check(game, game->player_x, game->player_y - 1)  == false)
 	{
-		game->arr_img[PLAYER]->instances[0].x -= 2;
-		game->player_y--;
+		printf("== press left ==\n");
+		game->playr->instances[0].x -= 5;
 	}
 }
 
 void	move_right(t_mini_map *game)
 {
-	if (move_check(game, game->player_x, game->player_y + 1))
+	if (move_check(game, game->player_x, game->player_y + 1) == false)
 	{
-		game->arr_img[PLAYER]->instances[0].x += 2;
-		game->player_y++;
+		printf("== press right ==\n");
+		game->playr->instances[0].x += 5;
 	}
 }

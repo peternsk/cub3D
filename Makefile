@@ -19,7 +19,7 @@ MINI_MAP    =
 
 PARSING     =
 
-UTILS       =	copy_map init_mini_s ft_free
+UTILS       =	copy_map init_mini_s ft_free  map_to_arr map_len
 
 SRCS        =   $(addsuffix .c, $(addprefix $(SRCS_DIR)/game/, $(GAME))) \
                 $(addsuffix .c, $(addprefix $(SRCS_DIR)/garbage/, $(GARBAGE))) \

@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/17 11:49:50 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/17 16:28:10 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_count_line(char *file_path)
 	return (line_num);
 }
 
-t_mini_map	*ft_mini(void)
+t_mini_map	*ft_mini(char *file_path)
 {
 	t_mini_map	*game;
 
@@ -44,7 +44,7 @@ t_mini_map	*ft_mini(void)
 	game->map = 0;
 	game->player_x = 0;
 	game->player_y = 0;
-	game->height = 0;
+	game->height = ft_count_line(file_path);
 	game->width = 0;
 	game->mlx = NULL;
 	return (game);
