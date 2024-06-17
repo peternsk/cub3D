@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/17 11:37:58 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/17 12:10:00 by peternsaka       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+#define MAP_SIZE 10
 
 typedef enum s_mm_images
 {
@@ -69,7 +71,7 @@ bool				ft_map_to_arr(t_mini_map *game, char *file_path, int fd);
 int					ft_count_line(char *file_path);
 void				ft_p_position(t_mini_map *game);
 void				ft_ext_position(t_mini_map *game);
-bool				ft_arr_cpy(t_mini_map *game); 
+bool				ft_arr_cpy(t_mini_map *game);
 void				ft_flood_fill(int x, int y, t_mini_map *game);
 
 //mlx

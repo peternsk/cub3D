@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/17 11:45:39 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/17 12:06:16 by peternsaka       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_arr_texture(t_mini_map *game)
 	game->arr_txtur[PLAYER] = mlx_load_png("./images/mini_map_player.png");
 	if (!game->arr_txtur[WALL] || !game->arr_txtur[FLOOR] || !game->arr_txtur[PLAYER])
 		ft_free_f(game, "error");
+	printf("=== [ ft_arr_texture ] ===\n");
 }
 
 void	ft_texture_to_image(t_mini_map *game)
@@ -31,6 +32,7 @@ void	ft_texture_to_image(t_mini_map *game)
 			game->arr_txtur[PLAYER]);
 	if (!game->arr_img[WALL] || !game->arr_img[FLOOR] || !game->arr_img[PLAYER])
 		ft_free_f(game, "error");
+	printf("=== [ ft_texture_to_image ] ===\n");
 }
 
 void	ft_load_png_utlis(t_mini_map *game, t_load_pos *var)
