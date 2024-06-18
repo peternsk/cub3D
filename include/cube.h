@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/17 16:31:42 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:47:52 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <unistd.h>
 
 #define MAP_SIZE 10
+#define PI 3.1415926535
 
 typedef enum s_mm_images
 {
@@ -46,7 +47,10 @@ typedef struct s_mini_map
 {
 	char			**map;
 	int				player_x;
+	int				player_dx;
 	int				player_y;
+	int				player_dy;
+	int				player_a;
 	int				height;
 	int				width;
 	mlx_texture_t	*arr_txtur[NUM_OF_IMAGE];
