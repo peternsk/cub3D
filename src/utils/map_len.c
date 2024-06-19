@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:19:47 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/17 16:36:20 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/18 22:51:46 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int	max_len(t_mini_map *game)
 			max_len = max_tmp;
 		i++;
 	}
-	return (max_len);
+	return (max_len - 1);
 }
