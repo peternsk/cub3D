@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cube.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/17 22:47:52 by pnsaka           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CUBE_H
 # define CUBE_H
 
@@ -25,6 +13,10 @@
 
 #define MAP_SIZE 10
 #define PI 3.1415926535
+
+typedef struct s_info_file t_info_file;
+typedef struct s_rgb t_rgb;
+typedef struct s_texture t_texture;
 
 typedef enum s_mm_images
 {
@@ -103,5 +95,65 @@ void				ft_delete_image(t_mini_map *game);
 void				ft_delete_texture(t_mini_map *game);
 int					max_len(t_mini_map *game);
 void				ft_ext_prg(char *mess_out);
+
+// pars_map
+// pourrait etre la struct
+
+bool    	filename(char *file);
+t_info_file *valide_map(char *file);
+char    	**getfile(char *file);
+bool    	pathtexture(char *data);
+bool    	wallscolors(char *data);
+char    	**getmap(char **files);
+char    	**removenewline(char **map);
+bool    	close_by_one(char **map);
+bool    	looking_for_six(char *s, char x);
+int     	size_len(char **map);
+void    	err(char *str);
+bool    	look_space(char **map);
+bool    	six_char_invalide(char  **map);
+int			ft_isupper(int c);
+char		*strmalloc(int size);
+char		*get_next_line(int fd);
+bool    	ft_strcmp(char *s1, char *s2);
+void		free_sstr(char **str);
+t_info_file *init_info();
+t_texture	*four_texture(char   **file);
+
+enum direction
+{
+	nord,
+	south,
+	west,
+	east,
+	_floor,
+	ceiling,
+
+};
+
+typedef struct s_texture
+{
+	int	side;
+	char path;
+	struct	s_texture *next;
+}	t_texture;
+
+typedef struct s_rgb
+{
+	int	side;
+	char path;
+	int	one;
+	int	two;
+	int	three;
+	struct	s_rgb *next;
+}	t_rgb;
+
+
+typedef struct s_info_file
+{
+	char		**v_map;
+	t_texture	*v_texture;
+	t_rgb		*v_rgb;
+}	t_info_file;
 
 #endif
