@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/17 22:47:52 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/20 00:31:43 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 #define MAP_SIZE 10
 #define PI 3.1415926535
+#define BPP sizeof(int32_t)
 
 typedef enum s_mm_images
 {
@@ -53,9 +54,13 @@ typedef struct s_mini_map
 	int				player_a;
 	int				height;
 	int				width;
+	int 			wind_height;
+	int 			wind_width;
 	mlx_texture_t	*arr_txtur[NUM_OF_IMAGE];
 	mlx_image_t		*arr_img[NUM_OF_IMAGE];
 	mlx_image_t		*playr;
+	mlx_image_t		*floor;
+	mlx_image_t		*celling;
 	mlx_t			*mlx;
 	mlx_key_data_t	keydata;
 }					t_mini_map;
@@ -103,5 +108,12 @@ void				ft_delete_image(t_mini_map *game);
 void				ft_delete_texture(t_mini_map *game);
 int					max_len(t_mini_map *game);
 void				ft_ext_prg(char *mess_out);
+
+
+//the real cub3D
+void				minimap(t_mini_map *game, t_load_pos *var);
+void				create_background_celling(t_mini_map *game);
+void				create_background_floor(t_mini_map *game);
+void				color_background(t_mini_map *game);
 
 #endif

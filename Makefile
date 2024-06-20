@@ -9,7 +9,7 @@ INC_DIR 	= 	include
 SRCS_DIR    = 	src
 OBJS_DIR    = 	obj
 
-GAME	    =	images ft_player_moves ft_movement
+GAME	    =	images ft_player_moves ft_movement background
 
 GARBAGE     =
 
