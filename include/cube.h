@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/20 00:31:43 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/20 19:01:58 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 #define MAP_SIZE 10
 #define PI 3.1415926535
 #define BPP sizeof(int32_t)
+#define WINDOW_HEIGHT 640
+#define WINDOW_WIDTH  1056
+
 
 typedef enum s_mm_images
 {
@@ -59,8 +62,7 @@ typedef struct s_mini_map
 	mlx_texture_t	*arr_txtur[NUM_OF_IMAGE];
 	mlx_image_t		*arr_img[NUM_OF_IMAGE];
 	mlx_image_t		*playr;
-	mlx_image_t		*floor;
-	mlx_image_t		*celling;
+	mlx_image_t		*background;
 	mlx_t			*mlx;
 	mlx_key_data_t	keydata;
 }					t_mini_map;

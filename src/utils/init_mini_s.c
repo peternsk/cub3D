@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/19 23:25:04 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/20 18:52:34 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_mini_map	*ft_mini(char *file_path)
 	game->player_y = 0;
 	game->height = ft_count_line(file_path);
 	game->width = 0;
-	game->wind_height = (20 * 32);
-	game->wind_width = (40 * 32);
+	game->wind_height = WINDOW_HEIGHT;
+	game->wind_width = WINDOW_WIDTH;
 	game->mlx = NULL;
 	return (game);
 }

@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:42:07 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/20 00:30:50 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/20 10:54:12 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	main(int ac, char **av)
 			return (EXIT_FAILURE);
 		}
 		color_background(game);
-		printf("=========\n");
 		minimap(game, &var);
+		// recasting
 		mlx_key_hook(game->mlx, &ft_player_moves, game);
 		mlx_loop(game->mlx);
 		return (EXIT_SUCCESS);

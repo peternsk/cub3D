@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/19 23:27:37 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/20 19:18:38 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ void	ft_load_png(t_mini_map *game, t_load_pos *var)
 		var->x = 0;
 		var->y = var->y + 8;
 	}
-	game->playr = mlx_new_image(game->mlx, 6, 6);
+	game->playr = mlx_new_image(game->mlx, 5, 6);
 	ft_memset(game->playr->pixels, 255, 128);
-	mlx_image_to_window(game->mlx, game->playr, 20, 20); //create player
+	game->player_x = 20;
+	game->player_y = 20;
+	mlx_image_to_window(game->mlx, game->playr, game->player_x, game->player_y);
+
 }
 
 void	minimap(t_mini_map *game, t_load_pos *var)
