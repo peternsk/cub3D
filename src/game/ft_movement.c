@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 19:17:38 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/20 20:01:44 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/21 11:30:42 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 bool	move_check(t_mini_map *game, int x, int y)
 {
-	if (game->map[game->player_x][game->player_y] == '0')
+	// if (game->map[game->player_x][game->player_y] == '0')
+	
 		return (true);
 	return (false);
 }
-
+																																																										
 void	move_up(t_mini_map *game)
 {
 	// if (move_check(game, game->player_x - 1, game->player_y) == false)
