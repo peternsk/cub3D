@@ -99,26 +99,30 @@ void				ft_ext_prg(char *mess_out);
 // pars_map
 // pourrait etre la struct
 
-bool    	filename(char *file);
-t_info_file *valide_map(char *file);
-char    	**getfile(char *file);
-bool    	pathtexture(char *data);
-bool    	wallscolors(char *data);
-char    	**getmap(char **files);
-char    	**removenewline(char **map);
-bool    	close_by_one(char **map);
-bool    	looking_for_six(char *s, char x);
-int     	size_len(char **map);
-void    	err(char *str);
-bool    	look_space(char **map);
-bool    	six_char_invalide(char  **map);
-int			ft_isupper(int c);
-char		*strmalloc(int size);
-char		*get_next_line(int fd);
-bool    	ft_strcmp(char *s1, char *s2);
-void		free_sstr(char **str);
-t_info_file *init_info();
-t_texture	*four_texture(char   **file);
+bool    		filename(char *file);
+t_info_file 	*valide_map(char *file);
+char    		**getfile(char *file);
+bool    		pathtexture(char *data);
+bool    		wallscolors(char *data);
+char    		**getmap(char **files);
+char    		**removenewline(char **map);
+bool    		close_by_one(char **map);
+bool    		looking_for_six(char *s, char x);
+int     		size_len(char **map);
+void    		err(char *str);
+bool    		look_space(char **map);
+bool    		six_char_invalide(char  **map);
+int				ft_isupper(int c);
+char			*get_next_line(int fd);
+bool    		ft_strcmp(char *s1, char *s2);
+void			free_sstr(char **str);
+t_info_file 	*init_info();
+t_texture		*four_texture(char   **file);
+long long int	atoi_long(const char *str);
+bool			is_int(long long int nb);
+bool			is_all_nb_int(char **tab_nb);
+int				type_texture(char   *str);
+t_rgb			*two_rgb(char **map);
 
 enum direction
 {
@@ -128,20 +132,19 @@ enum direction
 	east,
 	_floor,
 	ceiling,
-
 };
 
 typedef struct s_texture
 {
 	int	side;
-	char path;
+	char *path;
 	struct	s_texture *next;
 }	t_texture;
 
 typedef struct s_rgb
 {
 	int	side;
-	char path;
+	char *path;
 	int	one;
 	int	two;
 	int	three;

@@ -1,6 +1,6 @@
 #include "cube.h"
 
-int type(char   *str)
+int type_texture(char   *str)
 {
     char    **cm;
     
@@ -14,25 +14,26 @@ int type(char   *str)
     if (ft_strcmp(cm[0], "EA"))
         return (free_sstr(cm),east);
     if (ft_strcmp(cm[0], "F"))
-        return (free_sstr(cm),floor);
+        return (free_sstr(cm),_floor);
     return (free_sstr(cm),ceiling);
 }
 
 void    add_texutre(t_texture **node, char *str)
 {
-    t_texture *new;
-    t_texture *current;
-    char    **data;
+    t_texture   *new;
+    t_texture   *current;
+    char        **data;
+    
     data = ft_split(str, ' ');
     new = malloc(sizeof(t_texture));
     if (new)
     {
-        new->side = data[0];
+        new->side = type_texture(data[0]);
         new->path = data[1];
         new->next = NULL;
-        if (!node || *node)
+        if (!node || !*node)
         {
-            node = new;
+            *node = new;
             return ;
         }
         current = *node;
@@ -50,6 +51,7 @@ t_texture *four_texture(char   **file)
     int        i;
 
     i = 0;
+    less = 0;
     four_texture = NULL;
     while (file[i] != NULL && less < 5)
     {

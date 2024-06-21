@@ -37,7 +37,6 @@ char **getfile(char *s)
     str = get_next_line(fd);
     while (str != NULL)
     {
-        printf("%s\n", str);
         free(str);
         str = NULL;
         len_map++;

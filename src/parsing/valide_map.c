@@ -73,19 +73,29 @@ t_info_file *valide_map(char *file)
     char    **map;
     // char    **r_map;
 
-    printf("inside 1\n");
     load_files = getfile(file);
     if (last_map(load_files) == false)
         return (NULL);
-    printf("inside 2\n");
-    info->v_texture = four_texture(load_files);
-    printf("inside 3\n");
-    while (info->v_texture != NULL)
+    // info->v_texture = four_texture(load_files);
+    // while (info->v_texture != NULL)
+    // {
+    //     if (info->v_texture->path)
+    //         printf("path %s\n", info->v_texture->path);
+    //     info->v_texture = info->v_texture->next; 
+    // }
+    info->v_rgb = two_rgb(load_files);
+    if (info->v_rgb)
     {
-        printf("%c\n", info->v_texture->path);
-        info->v_texture = info->v_texture->next; 
+        while (info->v_rgb != NULL)
+        {
+            printf("side    %d\n", info->v_rgb->side);
+            printf("one     %d\n", info->v_rgb->one);
+            printf("two     %d\n", info->v_rgb->two);
+            printf("three   %d\n", info->v_rgb->three);
+            printf("================================\n");
+            info->v_rgb = info->v_rgb->next; 
+        }
     }
-    // wallscolors(map);
     map = getmap(load_files);
     info->v_map = removenewline(map);
     // if (r_map)

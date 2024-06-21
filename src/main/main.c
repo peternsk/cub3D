@@ -16,7 +16,6 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		printf("tag1\n");
 		if (!valide_map(av[1]))
 			return (EXIT_FAILURE);
 		printf("tag2\n");
