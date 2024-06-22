@@ -10,5 +10,7 @@ t_info_file *init_info()
     new->v_map = NULL;
     new->v_rgb = NULL;
     new->v_texture = NULL;
+    new->fake_maps = NULL;
+    new->load_files = NULL;
     return (new);
 }

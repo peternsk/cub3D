@@ -53,7 +53,7 @@ t_rgb   *two_rgb(char **map)
     y = 0;
     less = 0;
     node = NULL;
-    while (map[y] != NULL && less < 2)
+    while (map[y] != NULL && less < 3)
     {
         if (wallscolors(map[y]) == true)
         {

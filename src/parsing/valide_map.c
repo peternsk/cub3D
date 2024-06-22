@@ -16,7 +16,7 @@ bool look_inside(char *s, int walls, int texture)
                 if (*s == '\n' || *s == 32)
                     s++;
                 else
-                    return (err("Error\nData too early in the file\n"), false);
+                    return (err("Error\nWrong data found!!\n"), false);
             }
         }
     }
@@ -54,11 +54,12 @@ bool    error_map(char **map)
         return (NULL);
 
     is_found = false;
-    is_found = look_space(map);
+    is_found = look_newline(map);
     if (!is_found)
        is_found = six_char_invalide(map);
     if (!is_found)
        close_by_one(map);
+    is_found = is_player(map);
     return (is_found);
 }
 
@@ -69,41 +70,13 @@ t_info_file *valide_map(char *file)
     if (filename(file) == false)
         return (err("Error\nBad filename\n"), NULL);
     info = init_info();
-    char    **load_files;
-    char    **map;
-    // char    **r_map;
-
-    load_files = getfile(file);
-    if (last_map(load_files) == false)
+    info->load_files = getfile(file);
+    if (last_map(info->load_files) == false)
         return (NULL);
-    // info->v_texture = four_texture(load_files);
-    // while (info->v_texture != NULL)
-    // {
-    //     if (info->v_texture->path)
-    //         printf("path %s\n", info->v_texture->path);
-    //     info->v_texture = info->v_texture->next; 
-    // }
-    info->v_rgb = two_rgb(load_files);
-    if (info->v_rgb)
-    {
-        while (info->v_rgb != NULL)
-        {
-            printf("side    %d\n", info->v_rgb->side);
-            printf("one     %d\n", info->v_rgb->one);
-            printf("two     %d\n", info->v_rgb->two);
-            printf("three   %d\n", info->v_rgb->three);
-            printf("================================\n");
-            info->v_rgb = info->v_rgb->next; 
-        }
-    }
-    map = getmap(load_files);
-    info->v_map = removenewline(map);
-    // if (r_map)
-    // {
-    //     for (int i = 0; r_map[i]!= NULL; i++)
-    //         printf("%s", r_map[i]);
-    // }
-    // if (error_map(r_map))
-    //     return (r_map);
+    info->v_rgb = two_rgb(info->load_files);
+    info->fake_maps = getmap(info->load_files);
+    info->v_map = removenewline(info->fake_maps);
+    if (error_map(info->v_map))
+        return (info);
     return (NULL);
 }

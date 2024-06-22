@@ -17,6 +17,7 @@
 typedef struct s_info_file t_info_file;
 typedef struct s_rgb t_rgb;
 typedef struct s_texture t_texture;
+typedef struct s_player t_player;
 
 typedef enum s_mm_images
 {
@@ -110,7 +111,7 @@ bool    		close_by_one(char **map);
 bool    		looking_for_six(char *s, char x);
 int     		size_len(char **map);
 void    		err(char *str);
-bool    		look_space(char **map);
+bool    		look_newline(char **map);
 bool    		six_char_invalide(char  **map);
 int				ft_isupper(int c);
 char			*get_next_line(int fd);
@@ -123,6 +124,7 @@ bool			is_int(long long int nb);
 bool			is_all_nb_int(char **tab_nb);
 int				type_texture(char   *str);
 t_rgb			*two_rgb(char **map);
+t_player		*is_player(char **map);
 
 enum direction
 {
@@ -157,6 +159,16 @@ typedef struct s_info_file
 	char		**v_map;
 	t_texture	*v_texture;
 	t_rgb		*v_rgb;
+	char		**load_files;
+	char		**fake_maps;
 }	t_info_file;
+
+typedef struct s_player
+{
+	int	pos_y;
+	int	pos_x;
+	int	side;
+}	t_player;
+
 
 #endif

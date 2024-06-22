@@ -1,6 +1,6 @@
 #include "cube.h"
 
-bool    look_space(char **map)
+bool    look_newline(char **map)
 {
     int i;
 

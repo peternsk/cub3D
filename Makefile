@@ -18,7 +18,7 @@ MAIN	    =	main
 
 MINI_MAP    =
 
-PARSING     =  close_by_one filename getfile getmap look_space pathtexture removenewline six_char_invalide valide_map wallscolors  ft_isupper free_sstr init_info \
+PARSING     =  close_by_one filename getfile getmap look_newline pathtexture removenewline six_char_invalide valide_map wallscolors  ft_isupper free_sstr init_info \
 				ft_strcmp atoi_long
 
 UTILS       =	copy_map init_mini_s ft_free  map_to_arr map_len
