@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/20 19:01:58 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/21 19:51:04 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ typedef struct s_load_pos
 	int				x;
 	int				y;
 }					t_load_pos;
+
+// typedef struct s_player
+// {
+// 	int				player_x;
+// 	int				player_dx;
+// 	int				player_y;
+// 	int				player_dy;
+// 	int				player_a;
+// }					t_player;
 
 typedef struct s_mini_map
 {
