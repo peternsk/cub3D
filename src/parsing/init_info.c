@@ -12,5 +12,6 @@ t_info_file *init_info()
     new->v_texture = NULL;
     new->fake_maps = NULL;
     new->load_files = NULL;
+    new->push_p = NULL;
     return (new);
 }

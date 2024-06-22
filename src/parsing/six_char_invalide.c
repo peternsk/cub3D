@@ -75,10 +75,10 @@ bool    six_char_invalide(char  **map)
         while (map[y][x] != '\0')
         {
             if (looking_for_six("NSWE10 \n", map[y][x]) == false)
-                return (err("Error\nInvalid character : "), err(&map[y][x]), err("\n"), true);
+                return (err("Error\nInvalid character : "), err(&map[y][x]), err("\n"), false);
             x++;
         }
         y++;
     }
-    return (false);
+    return (true);
 }

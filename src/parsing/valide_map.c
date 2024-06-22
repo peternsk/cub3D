@@ -57,9 +57,8 @@ bool    error_map(char **map)
     is_found = look_newline(map);
     if (!is_found)
        is_found = six_char_invalide(map);
-    if (!is_found)
-       close_by_one(map);
-    is_found = is_player(map);
+    if (is_found)
+        is_found = close_by_one(map);
     return (is_found);
 }
 
@@ -77,6 +76,10 @@ t_info_file *valide_map(char *file)
     info->fake_maps = getmap(info->load_files);
     info->v_map = removenewline(info->fake_maps);
     if (error_map(info->v_map))
-        return (info);
+    {
+        info->push_p = is_player(info->v_map);
+        if (info->push_p)
+            return (info);
+    }
     return (NULL);
 }

@@ -161,13 +161,13 @@ typedef struct s_info_file
 	t_rgb		*v_rgb;
 	char		**load_files;
 	char		**fake_maps;
+	t_player	*push_p;
 }	t_info_file;
-
 typedef struct s_player
 {
-	int	pos_y;
 	int	pos_x;
-	int	side;
+	int pos_y;
+	int side;
 }	t_player;
 
 
