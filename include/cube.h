@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/21 19:51:04 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:54:40 by peternsaka       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,36 @@ typedef struct s_load_pos
 
 // typedef struct s_player
 // {
-// 	int				player_x;
-// 	int				player_dx;
-// 	int				player_y;
-// 	int				player_dy;
-// 	int				player_a;
+// 	double				player_x;
+// 	double				player_dx;
+// 	double				player_y;
+// 	double				player_dy;
+// 	double				player_a;
+
+// 	double				ray_dir_x;
+// 	double				ray_dir_y;
+
+// 	double				cam_plane_x;
+// 	double				cam_plane_y;
+
 // }					t_player;
 
 typedef struct s_mini_map
 {
 	char			**map;
-	int				player_x;
-	int				player_dx;
-	int				player_y;
-	int				player_dy;
-	int				player_a;
+	double				player_x;
+	double				player_dx;
+	double				player_y;
+	double				player_dy;
+	double				player_a;
 	int				height;
 	int				width;
 	int 			wind_height;
 	int 			wind_width;
+
+	// int				playing;
+	// int				game_over;
+
 	mlx_texture_t	*arr_txtur[NUM_OF_IMAGE];
 	mlx_image_t		*arr_img[NUM_OF_IMAGE];
 	mlx_image_t		*playr;
