@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/24 10:54:40 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/06/24 14:59:06 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@
 # include <string.h>
 # include <unistd.h>
 
-#define MAP_SIZE 10
-#define PI 3.1415926535
-#define BPP sizeof(int32_t)
-#define WINDOW_HEIGHT 640
-#define WINDOW_WIDTH  1056
-
+# define MAP_SIZE 10
+# define PI 3.1415926535
+# define BPP sizeof(int32_t)
+# define WINDOW_HEIGHT 640
+# define WINDOW_WIDTH 1056
 
 typedef enum s_mm_images
 {
@@ -37,7 +36,6 @@ typedef enum s_mm_images
 	WALL,
 	NUM_OF_IMAGE
 }					t_mm_images;
-
 
 typedef struct s_load_pos
 {
@@ -66,15 +64,17 @@ typedef struct s_load_pos
 typedef struct s_mini_map
 {
 	char			**map;
-	double				player_x;
-	double				player_dx;
-	double				player_y;
-	double				player_dy;
-	double				player_a;
+	
+	double			player_x;
+	double			player_dx;
+	double			player_y;
+	double			player_dy;
+	double			player_a;
+	
 	int				height;
 	int				width;
-	int 			wind_height;
-	int 			wind_width;
+	int				wind_height;
+	int				wind_width;
 
 	// int				playing;
 	// int				game_over;
@@ -83,6 +83,7 @@ typedef struct s_mini_map
 	mlx_image_t		*arr_img[NUM_OF_IMAGE];
 	mlx_image_t		*playr;
 	mlx_image_t		*background;
+	mlx_image_t		*line;
 	mlx_t			*mlx;
 	mlx_key_data_t	keydata;
 }					t_mini_map;
@@ -98,7 +99,7 @@ typedef struct s_game
 
 int					ft_count_line(char *file_path);
 
-//utils
+// utils
 bool				ft_map_to_arr(t_mini_map *game, int fd);
 int					ft_count_line(char *file_path);
 void				ft_p_position(t_mini_map *game);
@@ -106,21 +107,21 @@ void				ft_ext_position(t_mini_map *game);
 bool				ft_arr_cpy(t_mini_map *game);
 void				ft_flood_fill(int x, int y, t_mini_map *game);
 
-//mlx
+// mlx
 void				ft_load_png(t_mini_map *game, t_load_pos *var);
 void				ft_load_png_utlis(t_mini_map *game, t_load_pos *var);
 void				ft_arr_texture(t_mini_map *image);
 void				ft_texture_to_image(t_mini_map *game);
 void				ft_player_moves(mlx_key_data_t keydata, void *param);
 
-//player move
+// player move
 bool				move_check(t_mini_map *game, int x, int y);
 void				move_up(t_mini_map *game);
 void				move_down(t_mini_map *game);
 void				move_left(t_mini_map *game);
 void				move_right(t_mini_map *game);
 
-//assembled functions
+// assembled functions
 t_mini_map			*ft_mini(char *file_path);
 
 // //free
@@ -131,11 +132,12 @@ void				ft_delete_texture(t_mini_map *game);
 int					max_len(t_mini_map *game);
 void				ft_ext_prg(char *mess_out);
 
-
-//the real cub3D
+// the real cub3D
 void				minimap(t_mini_map *game, t_load_pos *var);
 void				create_background_celling(t_mini_map *game);
 void				create_background_floor(t_mini_map *game);
 void				color_background(t_mini_map *game);
+
+void				put_player(t_mini_map *game, t_load_pos *var);
 
 #endif

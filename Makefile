@@ -37,8 +37,8 @@ LIBFT_INC = ${LIBFT_PATH}/include
 MLX_PATH = MLX42/build
 MLX_LIB = ${MLX_PATH}/libmlx42.a
 # Change this path for your homebrew path
-MLX_INC = -Iinclude -lglfw -L "/opt/homebrew/Cellar/glfw/3.3.8/lib"
-# MLX_INC = -Iinclude -lglfw -L "/Users/pnsaka/.brew/Cellar/glfw/3.4/lib"
+# MLX_INC = -Iinclude -lglfw -L "/opt/homebrew/Cellar/glfw/3.3.8/lib"
+MLX_INC = -Iinclude -lglfw -L "/Users/pnsaka/.brew/Cellar/glfw/3.4/lib"
 MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 
 GREEN	= \033[32;1m

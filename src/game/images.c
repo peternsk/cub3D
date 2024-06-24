@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/20 19:18:38 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/24 15:05:36 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,7 @@ void	ft_load_png(t_mini_map *game, t_load_pos *var)
 		var->x = 0;
 		var->y = var->y + 8;
 	}
-	game->playr = mlx_new_image(game->mlx, 5, 6);
-	ft_memset(game->playr->pixels, 255, 128);
-	game->player_x = 20;
-	game->player_y = 20;
-	mlx_image_to_window(game->mlx, game->playr, game->player_x, game->player_y);
-
+	put_player(game, var);
 }
 
 void	minimap(t_mini_map *game, t_load_pos *var)
@@ -73,4 +68,17 @@ void	minimap(t_mini_map *game, t_load_pos *var)
 	ft_arr_texture(game);
 	ft_texture_to_image(game);
 	ft_load_png(game, var);
+}
+
+void	put_player(t_mini_map *game, t_load_pos *var)
+{
+	game->player_x = 20;
+	game->player_y = 20;
+	game->playr = mlx_new_image(game->mlx, 8, 8);
+	ft_memset(game->playr->pixels, 255, 256);
+	mlx_image_to_window(game->mlx, game->playr, game->player_x, game->player_y);
+	game->line = mlx_new_image(game->mlx, 24, 6);
+	ft_memset(game->line->pixels, 255, 198);
+	mlx_image_to_window(game->mlx, game->line, game->player_x, game->player_y
+		+ 3);
 }
