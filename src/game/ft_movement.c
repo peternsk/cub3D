@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 19:17:38 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/25 13:01:13 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/25 13:18:46 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	rotate_player(t_mini_map *game, double rot)
 	game->player_dx = game->player_dx * cos(rot) - game->player_dy * sin(rot);
 	game->player_dy = old_dir_x * sin(rot) + game->player_dy * cos(rot);
 	old_plane_x = game->cam_plane_x;
-	game->cam_plane_x = game->cam_plane_x * cos(rot) - game->cam_plane_y * sin(rot);
+	game->cam_plane_x = game->cam_plane_x * cos(rot) - game->cam_plane_y
+		* sin(rot);
 	game->cam_plane_y = old_plane_x * sin(rot) + game->cam_plane_y * cos(rot);
 }
 
