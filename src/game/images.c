@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/24 15:05:36 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/25 12:06:31 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	put_player(t_mini_map *game, t_load_pos *var)
 	game->playr = mlx_new_image(game->mlx, 8, 8);
 	ft_memset(game->playr->pixels, 255, 256);
 	mlx_image_to_window(game->mlx, game->playr, game->player_x, game->player_y);
-	game->line = mlx_new_image(game->mlx, 24, 6);
-	ft_memset(game->line->pixels, 255, 198);
+	game->line = mlx_new_image(game->mlx, 16, 6);
+	ft_memset(game->line->pixels, 255, 128);
 	mlx_image_to_window(game->mlx, game->line, game->player_x, game->player_y
 		+ 3);
 }

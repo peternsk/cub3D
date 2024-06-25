@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:21:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/24 14:59:06 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/25 12:33:25 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,30 @@ typedef struct s_load_pos
 typedef struct s_mini_map
 {
 	char			**map;
-	
-	double			player_x;
-	double			player_dx;
-	double			player_y;
-	double			player_dy;
-	double			player_a;
-	
+
 	int				height;
 	int				width;
 	int				wind_height;
 	int				wind_width;
 
-	// int				playing;
-	// int				game_over;
+	int				playing;
+	int				game_over;
 
+	double			player_x;
+	double			player_dx;
+	double			player_y;
+	double			player_dy;
+	double			player_a;
+
+	double			ray_dir_x;
+	double			ray_dir_y;
+
+	double			cam_plane_x;
+	double			cam_plane_y;
+	
+	double			mov_speed;
+	double			rot_speed;
+	
 	mlx_texture_t	*arr_txtur[NUM_OF_IMAGE];
 	mlx_image_t		*arr_img[NUM_OF_IMAGE];
 	mlx_image_t		*playr;
@@ -139,5 +148,6 @@ void				create_background_floor(t_mini_map *game);
 void				color_background(t_mini_map *game);
 
 void				put_player(t_mini_map *game, t_load_pos *var);
+void				rotate_player(t_mini_map *game, double rot);
 
 #endif
