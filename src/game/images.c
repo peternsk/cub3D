@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/17 16:37:49 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/25 12:06:31 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,34 @@ void	ft_load_png(t_mini_map *game, t_load_pos *var)
 	var->j = -1;
 	while (++var->i < game->height)
 	{
-		printf("=== [width %d] ===\n", game->width);
 		while (++var->j < game->width)
 		{
-			printf("=== [ var j ] ===\n");
 			ft_load_png_utlis(game, var);
-			var->x = var->x + 16;
+			var->x = var->x + 8;
 		}
 		var->j = -1;
 		var->x = 0;
-		var->y = var->y + 16;
+		var->y = var->y + 8;
 	}
-	printf("=== [ ft_texture_to_image ] ===\n");
+	put_player(game, var);
+}
+
+void	minimap(t_mini_map *game, t_load_pos *var)
+{
+	ft_arr_texture(game);
+	ft_texture_to_image(game);
+	ft_load_png(game, var);
+}
+
+void	put_player(t_mini_map *game, t_load_pos *var)
+{
+	game->player_x = 20;
+	game->player_y = 20;
 	game->playr = mlx_new_image(game->mlx, 8, 8);
-	ft_memset(game->playr->pixels, 255, 128);
-	mlx_image_to_window(game->mlx, game->playr, 20, 20);
+	ft_memset(game->playr->pixels, 255, 256);
+	mlx_image_to_window(game->mlx, game->playr, game->player_x, game->player_y);
+	game->line = mlx_new_image(game->mlx, 16, 6);
+	ft_memset(game->line->pixels, 255, 128);
+	mlx_image_to_window(game->mlx, game->line, game->player_x, game->player_y
+		+ 3);
 }
