@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:42:07 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/24 14:07:52 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/26 13:50:25 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ int	main(int ac, char **av)
 			puts(mlx_strerror(mlx_errno));
 			return (EXIT_FAILURE);
 		}
+		printf("=== SEGFAULT MAIN ===\n");
 		color_background(game);
 		minimap(game, &var);
 		// recasting
-		
 		mlx_key_hook(game->mlx, &ft_player_moves, game);
 		mlx_loop(game->mlx);
-		printf("=== SEGFAULT MAIN ===\n");
 		return (EXIT_SUCCESS);
 	}
 }
