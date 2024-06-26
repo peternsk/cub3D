@@ -52,7 +52,6 @@ bool    error_map(char **map)
     bool    is_found;
     if (!map)
         return (NULL);
-
     is_found = false;
     is_found = look_newline(map);
     if (!is_found)
@@ -73,6 +72,7 @@ t_info_file *valide_map(char *file)
     if (last_map(info->load_files) == false)
         return (NULL);
     info->v_rgb = two_rgb(info->load_files);
+    info->v_texture = four_texture(info->load_files);
     info->fake_maps = getmap(info->load_files);
     info->v_map = removenewline(info->fake_maps);
     if (error_map(info->v_map))
