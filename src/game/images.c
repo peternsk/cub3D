@@ -6,33 +6,33 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/26 23:57:27 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/27 14:44:38 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-t_rectangle	init_rectangle(int x, int y, int width, int height)
+t_rect_data	init_rect(int x, int y, int w, int h)
 {
-	t_rectangle	rec;
+	t_rect_data	rectangle;
 
-	rec.x = x;
-	rec.y = y;
-	rec.height = height;
-	rec.width = width;
-	return (rec);
+	rectangle.x = x;
+	rectangle.y = y;
+	rectangle.w = w;
+	rectangle.h = h;
+	return (rectangle);
 }
 
-void	draw_rectangle(mlx_image_t *image, t_rectangle rec, uint32_t color)
+void	set_rectangle(mlx_image_t *image, t_rect_data rect, int color)
 {
-	int32_t	i;
-	int32_t	j;
+	int	i;
+	int	j;
 
-	i = rec.x;
-	while (i < rec.width + rec.x)
+	i = rect.x;
+	while (i < rect.w + rect.x)
 	{
-		j = rec.y;
-		while (j < rec.height + rec.y)
+		j = rect.y;
+		while (j < rect.h + rect.y)
 		{
 			mlx_put_pixel(image, i, j, color);
 			j++;
@@ -41,53 +41,48 @@ void	draw_rectangle(mlx_image_t *image, t_rectangle rec, uint32_t color)
 	}
 }
 
-void	ft_load_png_utlis(t_mini_map *game, int x, int y)
+void	minimap_tile(t_mini_map game, int x, int y)
 {
-	if (game->map[x][y] == '1')
+	if (game.map[y][x] == 1)
 	{
-		draw_rectangle(game->background, init_rectangle(x, y, 8, 8),
-			0x0000FFFF);
+		set_rectangle(game.minimap, init_rect(x * 8 + 1, y * 8 + 1, 8 - 2, 8
+				- 2), get_rgba(255, 255, 255, 255));
 	}
-	else if (game->map[x][y] == '0')
+	else if (game.map[y][x] == 0)
 	{
-		draw_rectangle(game->background, init_rectangle(x, y, 8, 8),
-			0x00FF00FF);
+		set_rectangle(game.minimap, init_rect(x * 8 + 1, y * 8 + 1, 8 - 2, 8
+				- 2), get_rgba(0, 0, 0, 255));
 	}
-	else
-	{
-		draw_rectangle(game->background, init_rectangle(x, y, 8, 8),
-			0x808080FF);
-	}
+	// else
+	// {
+	// 	draw_rectangle(game.minimap, init_rectangle(x * game.tile_size, y
+	// 			* game.tile_size, game.tile_size, game.tile_size), TRANSLUCENT);
+	// }
 }
 
-void	ft_load_png(t_mini_map *game, t_load_pos *var)
+void	set_minimap(t_mini_map game)
 {
 	int	x;
 	int	y;
 
-	(void)var;
-	y = 0;
-	while (y < game->width)
+	// if (rc.tile_size == -1)
+	// {
+	// 	draw_rectangle(rc.minimap, init_rectangle(0, 0, rc.map_width
+	// 			* rc.tile_size, rc.map_height * rc.tile_size), TRANSPARENT);
+	// 	return ;
+	// }
+	set_rectangle(game.minimap, init_rect(0, 0, game.width * 8, game.height
+			* 8), get_rgba(0, 0, 0, 255));
+	x = 0;
+	while (x < game.width)
 	{
-		x = 0;
-		while (x < game->height)
+		y = 0;
+		while (y < game.height)
 		{
-			printf("=== SEGFAULT %c ===\n", game->map[x][y]);
-			ft_load_png_utlis(game, x, y);
-			x++;
+			minimap_tile(game, x, y);
+			y++;
 		}
-		y++;
+		x++;
 	}
-	// put_player(game, var);
-}
-
-void	put_player(t_mini_map *game, t_load_pos *var)
-{
-	game->playr = mlx_new_image(game->mlx, 8, 8);
-	ft_memset(game->playr->pixels, 255, 256);
-	mlx_image_to_window(game->mlx, game->playr, game->player_x, game->player_y);
-	game->line = mlx_new_image(game->mlx, 16, 6);
-	ft_memset(game->line->pixels, 255, 128);
-	mlx_image_to_window(game->mlx, game->line, game->player_x, game->player_y
-		+ 3);
+	// draw_player(game);
 }
