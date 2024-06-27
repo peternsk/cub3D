@@ -99,6 +99,7 @@ bool						is_all_nb_int(char **tab_nb);
 int							type_texture(char *str);
 t_rgb						*two_rgb(char **map);
 t_player					*is_player(char **map);
+char    					**square_map(t_info_file *info);
 
 // the real cub3D
 void						minimap(t_mini_map *game, t_load_pos *var);

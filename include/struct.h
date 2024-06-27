@@ -93,6 +93,8 @@ typedef struct s_info_file
 	t_rgb					*v_rgb;
 	char					**load_files;
 	char					**fake_maps;
+	int						height;
+	int						width;
 	t_player				*push_p;
 }							t_info_file;
 
