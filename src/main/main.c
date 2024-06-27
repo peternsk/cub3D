@@ -17,6 +17,7 @@ void	game(t_info_file *info)
 {
 	t_mini_map	game;
 
+	printf("=== TEST 1 ===\n");
 	game = ft_mini(info);
 	color_background(game);
 	set_minimap(game);
