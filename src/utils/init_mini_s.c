@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mini_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/21 19:53:01 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/27 11:47:00 by peternsaka       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,22 @@ int	ft_count_line(char *file_path)
 	return (line_num);
 }
 
-t_mini_map	*ft_mini(char *file_path)
+t_mini_map	ft_mini(t_info_file *info)
 {
-	t_mini_map	*game;
+	t_mini_map	game;
 
-	game = malloc(1 * sizeof(t_mini_map));
-	if (!game)
-		return (NULL);
-	game->map = 0;
-	game->player_x = 0;
-	game->player_y = 0;
-	game->player_dx = 0;
-	game->player_dy = 0;
-	game->player_a = 0;
-	game->height = ft_count_line(file_path);
-	game->width = 0;
-	game->wind_height = WINDOW_HEIGHT;
-	game->wind_width = WINDOW_WIDTH;
-	game->mlx = NULL;
+	game.map = info->v_map;
+	game.player_x = 0;
+	game.player_y = 0;
+	game.player_dx = 0;
+	game.player_dy = 0;
+	game.player_a = 0;
+	game.height = map_height(info->v_map);
+	game.width = max_len(game.height, game.map);
+	game.wind_height = WINDOW_HEIGHT;
+	game.wind_width = WINDOW_WIDTH;
+	game.mlx = mlx_init(game.wind_width, game.wind_height, "cub3D", true);
+	if (!game.mlx)
+		printf("unable to initialize\n");
 	return (game);
 }

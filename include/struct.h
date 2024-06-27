@@ -60,10 +60,9 @@ typedef struct s_mini_map
 	double					cam_plane_y;
 	double					mov_speed;
 	double					rot_speed;
-	mlx_texture_t			*arr_txtur[NUM_OF_IMAGE];
-	mlx_image_t				*arr_img[NUM_OF_IMAGE];
 	mlx_image_t				*playr;
 	mlx_image_t				*background;
+	mlx_image_t				*minimap;
 	mlx_image_t				*line;
 	mlx_t					*mlx;
 	mlx_key_data_t			keydata;
@@ -102,5 +101,13 @@ typedef struct s_player
 	int						pos_y;
 	int						side;
 }							t_player;
+
+typedef struct s_rect_data
+{
+	int						x;
+	int						y;
+	int						w;
+	int						h;
+}							t_rect_data;
 
 #endif

@@ -27,7 +27,6 @@ typedef struct s_rgb		t_rgb;
 typedef struct s_texture	t_texture;
 typedef struct s_player		t_player;
 
-
 /*====================================================*/
 /*=                      SO_LONG                     =*/
 /*====================================================*/
@@ -35,19 +34,10 @@ typedef struct s_player		t_player;
 int							ft_count_line(char *file_path);
 
 // utils
-bool						ft_map_to_arr(t_mini_map *game, int fd);
+char						**ft_map_to_arr(t_mini_map game, int fd);
 int							ft_count_line(char *file_path);
-void						ft_p_position(t_mini_map *game);
-void						ft_ext_position(t_mini_map *game);
-bool						ft_arr_cpy(t_mini_map *game);
-void						ft_flood_fill(int x, int y, t_mini_map *game);
 
 // mlx
-void						ft_load_png(t_mini_map *game, t_load_pos *var);
-void						ft_load_png_utlis(t_mini_map *game,
-								t_load_pos *var);
-void						ft_arr_texture(t_mini_map *image);
-void						ft_texture_to_image(t_mini_map *game);
 void						ft_player_moves(mlx_key_data_t keydata,
 								void *param);
 
@@ -57,18 +47,6 @@ void						move_up(t_mini_map *game);
 void						move_down(t_mini_map *game);
 void						move_left(t_mini_map *game);
 void						move_right(t_mini_map *game);
-
-// assembled functions
-t_mini_map					*ft_mini(char *file_path);
-
-// //free
-// void				ft_free_2d_map(char **map);
-int							ft_free_f(t_mini_map *game, char *error_msg);
-void						ft_delete_image(t_mini_map *game);
-void						ft_delete_texture(t_mini_map *game);
-int							max_len(t_mini_map *game);
-void						ft_ext_prg(char *mess_out);
-
 
 /*====================================================*/
 /*=                      CUBE 3D                     =*/
@@ -100,11 +78,14 @@ int							type_texture(char *str);
 t_rgb						*two_rgb(char **map);
 t_player					*is_player(char **map);
 
-// the real cub3D
-void						minimap(t_mini_map *game, t_load_pos *var);
-void						create_background_celling(t_mini_map *game);
-void						color_background(t_mini_map *game);
-void						put_player(t_mini_map *game, t_load_pos *var);
+void						create_background_celling(t_mini_map game);
+void						color_background(t_mini_map game);
 void						rotate_player(t_mini_map *game, double rot);
+t_mini_map					ft_mini(t_info_file *info);
+int							get_rgba(int r, int g, int b, int a);
+int	max_len(int height, char **map);
+void						set_minimap(t_mini_map game);
+
+int		map_height(char **map);
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:19:47 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/18 22:51:46 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/27 11:45:33 by peternsaka       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	max_len(t_mini_map *game)
+int	max_len(int height, char **map)
 {
 	int max_len;
 	int max_tmp;
@@ -23,9 +23,9 @@ int	max_len(t_mini_map *game)
 	max_tmp = 0;
 	i = 0;
 	j = 0;
-	while (i < game->height)
+	while (i < height)
 	{
-		max_tmp = ft_strlen(game->map[i]);
+		max_tmp = ft_strlen(map[i]);
 		if (max_tmp > max_len)
 			max_len = max_tmp;
 		i++;
