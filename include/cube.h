@@ -125,6 +125,7 @@ bool			is_all_nb_int(char **tab_nb);
 int				type_texture(char   *str);
 t_rgb			*two_rgb(char **map);
 t_player		*is_player(char **map);
+char			**square_map(t_info_file *info);
 
 enum direction
 {
@@ -162,7 +163,10 @@ typedef struct s_info_file
 	char		**load_files;
 	char		**fake_maps;
 	t_player	*push_p;
+	int			height;
+	int			width;
 }	t_info_file;
+
 typedef struct s_player
 {
 	int	pos_x;
