@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/21 19:53:01 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/26 22:16:42 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ t_mini_map	*ft_mini(char *file_path)
 	if (!game)
 		return (NULL);
 	game->map = 0;
-	game->player_x = 0;
-	game->player_y = 0;
+	game->player_x = 20;
+	game->player_y = 20;
 	game->player_dx = 0;
 	game->player_dy = 0;
 	game->player_a = 0;

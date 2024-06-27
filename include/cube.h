@@ -44,12 +44,10 @@ void						ft_flood_fill(int x, int y, t_mini_map *game);
 
 // mlx
 void						ft_load_png(t_mini_map *game, t_load_pos *var);
-void						ft_load_png_utlis(t_mini_map *game,
-								t_load_pos *var);
+void	ft_load_png_utlis(t_mini_map *game, int x, int y);
 void						ft_arr_texture(t_mini_map *image);
 void						ft_texture_to_image(t_mini_map *game);
-void						ft_player_moves(mlx_key_data_t keydata,
-								void *param);
+void	ft_player_moves(mlx_key_data_t keydata, t_mini_map	*game);
 
 // player move
 bool						move_check(t_mini_map *game, int x, int y);

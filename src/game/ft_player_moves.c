@@ -6,17 +6,14 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 10:58:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/06/20 11:53:09 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/26 23:55:28 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void	ft_player_moves(mlx_key_data_t keydata, void *param)
+void	ft_player_moves(mlx_key_data_t keydata, t_mini_map	*game)
 {
-	t_mini_map	*game;
-
-	game = param;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))

@@ -1,16 +1,27 @@
 
 #include "cube.h"
 
-int	main(int ac, char **av)
+void	game_on(void *param)
 {
-	t_mini_map	*game;
-	t_load_pos	var;
-	int			fd;
+	t_load_pos		var;
+	mlx_key_data_t	keydata;
+	t_mini_map		*game;
 
+	game = param;
 	var.i = 0;
 	var.j = 0;
 	var.x = 0;
 	var.y = 0;
+	ft_load_png(game, &var);
+	printf("=== SEGFAULT 132 ===\n");
+	ft_player_moves(keydata, game);
+}
+
+int	main(int ac, char **av)
+{
+	t_mini_map	*game;
+	int			fd;
+
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
@@ -26,11 +37,10 @@ int	main(int ac, char **av)
 			puts(mlx_strerror(mlx_errno));
 			return (EXIT_FAILURE);
 		}
-		printf("=== SEGFAULT MAIN ===\n");
+		game->minimap = mlx_new_image(game->mlx, game->width * 8, game->height * 8);
+		mlx_image_to_window(game->mlx, game->minimap, 0 , 0);
 		color_background(game);
-		minimap(game, &var);
-		// recasting
-		mlx_key_hook(game->mlx, &ft_player_moves, game);
+		mlx_loop_hook(game->mlx, game_on, game);
 		mlx_loop(game->mlx);
 		return (EXIT_SUCCESS);
 	}

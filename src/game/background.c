@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 23:15:23 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/06/20 10:57:44 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/06/26 23:44:16 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	color_background(t_mini_map *game)
 	i = 0;
 	j = 0;
 	create_background_celling(game);
+	// printf("=== %d %d ===\n", game->width, game->height);
 	while(i < game->wind_height / 2)
 	{
 		while(j < game->wind_width )
