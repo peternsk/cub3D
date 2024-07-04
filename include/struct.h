@@ -39,36 +39,62 @@ typedef struct s_load_pos
 }							t_load_pos;
 
 
-typedef struct s_mini_map
+typedef struct s_cube
 {
-	char					**map;
+	t_info_file			 *info;
+	char				**map;
+	int					mini_height;
+	int					mini_width;
+	int					wind_height;
+	int					wind_width;
 
-	int						height;
-	int						width;
-	int						wind_height;
-	int						wind_width;
-	int						playing;
-	int						game_over;
-	double					player_x;
-	double					player_dx;
-	double					player_y;
-	double					player_dy;
-	double					player_a;
-	double					ray_dir_x;
-	double					ray_dir_y;
-	double					cam_plane_x;
-	double					cam_plane_y;
-	double					mov_speed;
-	double					rot_speed;
-	mlx_texture_t			*arr_txtur[NUM_OF_IMAGE];
-	mlx_image_t				*arr_img[NUM_OF_IMAGE];
-	mlx_image_t				*playr;
-	mlx_image_t				*background;
-	mlx_image_t				*minimap;
-	mlx_image_t				*line;
-	mlx_t					*mlx;
-	mlx_key_data_t			keydata;
-}							t_mini_map;
+	int					playing;
+	int					game_over;
+
+	int					x;
+	int					y;
+
+	double				player_x;
+	double				delta_x;
+	double				player_y;
+	double				delta_y;
+	double				player_a;
+	double				ray_dir_x;
+	double				ray_dir_y;
+	double				dir_x;
+	double				dir_y;
+	double				cam_x;
+	double				cam_y;
+	double				plane_x;
+	double				plane_y;
+
+	int					step_x;
+	int					step_y;
+	double 				side_dist_x;
+	double 				side_dist_y;
+	int					map_x;
+	int					map_y;
+	double				perp_dist;
+	int					side;
+	double				wall_dist;
+	int					line_height;
+	int					draw_start;
+	int					draw_end;
+	double				wall_x;
+	double				ray_dx;
+	double				ray_dy;
+	double				fov_ratio;
+
+	double				mov_speed;
+	double				rot_speed;
+	mlx_image_t			*playr;
+	mlx_image_t			*background;
+	mlx_image_t			*minimap;
+	mlx_image_t			*screen;
+	mlx_image_t			*line;
+	mlx_t				*mlx;
+	mlx_key_data_t		keydata;
+}						t_cube;
 
 typedef struct s_texture
 {

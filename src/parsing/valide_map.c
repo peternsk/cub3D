@@ -24,7 +24,7 @@ bool look_inside(char *s, int walls, int texture)
 }
 
 bool    last_map(char **map)
-{   
+{
     int     i;
     int     texture;
     int     walls;
@@ -82,7 +82,7 @@ t_info_file *valide_map(char *file)
         {
             info->v_map = square_map(info);
             // for (int i = 0;info->v_map[i] != NULL; i++)
-            // {   
+            // {
                 // printf("new -> %s\n", info->v_map[i]);
             // }
             return (info);

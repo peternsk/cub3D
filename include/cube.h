@@ -34,18 +34,17 @@ typedef struct s_player		t_player;
 int							ft_count_line(char *file_path);
 
 // utils
-char						**ft_map_to_arr(t_mini_map game, int fd);
 int							ft_count_line(char *file_path);
 
 // mlx
-void						ft_player_moves(mlx_key_data_t keydata, t_mini_map	*game);
+void	ft_player_moves(mlx_key_data_t keydata, void *param);
 
 // player move
-bool						move_check(t_mini_map *game, int x, int y);
-void						move_up(t_mini_map *game);
-void						move_down(t_mini_map *game);
-void						move_left(t_mini_map *game);
-void						move_right(t_mini_map *game);
+bool						move_check(t_cube *game, int x, int y);
+void						move_up(t_cube *game);
+void						move_down(t_cube *game);
+void						move_left(t_cube *game);
+void						move_right(t_cube *game);
 
 /*====================================================*/
 /*=                      CUBE 3D                     =*/
@@ -68,7 +67,7 @@ int							ft_isupper(int c);
 char						*get_next_line(int fd);
 bool						ft_strcmp(char *s1, char *s2);
 void						free_sstr(char **str);
-t_info_file					*init_info(void);
+t_info_file					 *init_info(void);
 t_texture					*four_texture(char **file);
 long long int				atoi_long(const char *str);
 bool						is_int(long long int nb);
@@ -78,14 +77,18 @@ t_rgb						*two_rgb(char **map);
 t_player					*is_player(char **map);
 char    					**square_map(t_info_file *info);
 
-void						create_background_celling(t_mini_map game);
-void						color_background(t_mini_map game);
-void						rotate_player(t_mini_map *game, double rot);
-t_mini_map					ft_mini(t_info_file *info);
+void						create_background_celling(t_cube *game);
+void						background(t_cube *game);
+void						rotate_player(t_cube *game, double rot);
+t_cube					*ft_mini(t_info_file *info);
 int							get_rgba(int r, int g, int b, int a);
 int							max_len(int height, char **map);
-void						set_minimap(t_mini_map game);
+void						set_minimap(t_cube *game);
+void						minimap_tile(t_cube *game, int x, int y);
 
 int							map_height(char **map);
+
+t_rect_data					init_rect(int x, int y, int w, int h);
+void						set_rectangle(mlx_image_t *image, t_rect_data rect, int color);
 
 #endif
