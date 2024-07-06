@@ -12,7 +12,6 @@ void	game(t_info_file *info)
 	game = ft_mini(info);
 	background(game);
 	set_minimap_tile(game);
-	// set_minimap(game);
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
 	// // mlx_key_hook(game->mlx, &ft_player_moves, &game);

@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/07/06 02:45:10 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/07/06 03:15:11 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ t_cube	*ft_mini(t_info_file *info)
 			game->wind_height);
 	game->minimap = mlx_new_image(game->mlx , game->mini_width * 10,
 			game->mini_height * 10);
+	game->playr = mlx_new_image(game->mlx , game->plane_x * 10,
+			game->plane_y * 10);
 	return (game);
 }

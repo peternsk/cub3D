@@ -37,7 +37,8 @@ int							ft_count_line(char *file_path);
 int							ft_count_line(char *file_path);
 
 // mlx
-void	ft_player_moves(mlx_key_data_t keydata, void *param);
+void						ft_player_moves(mlx_key_data_t keydata,
+								void *param);
 
 // player move
 bool						move_check(t_cube *game, int x, int y);
@@ -67,7 +68,7 @@ int							ft_isupper(int c);
 char						*get_next_line(int fd);
 bool						ft_strcmp(char *s1, char *s2);
 void						free_sstr(char **str);
-t_info_file					 *init_info(void);
+t_info_file					*init_info(void);
 t_texture					*four_texture(char **file);
 long long int				atoi_long(const char *str);
 bool						is_int(long long int nb);
@@ -75,20 +76,21 @@ bool						is_all_nb_int(char **tab_nb);
 int							type_texture(char *str);
 t_rgb						*two_rgb(char **map);
 t_player					*is_player(char **map);
-char    					**square_map(t_info_file *info);
+char						**square_map(t_info_file *info);
 
 void						create_background_celling(t_cube *game);
 void						background(t_cube *game);
 void						rotate_player(t_cube *game, double rot);
-t_cube					    *ft_mini(t_info_file *info);
+t_cube						*ft_mini(t_info_file *info);
 int							get_rgba(int r, int g, int b, int a);
 int							max_len(int height, char **map);
 void						set_minimap(t_cube *game);
-void	                    set_minimap_tile(t_cube *game);
-
+void						set_minimap_tile(t_cube *game);
 
 t_rect_data					init_rect(int x, int y, int w, int h);
-void						set_rectangle(mlx_image_t *image, t_rect_data rect, int color);
-void                       	minimap_tile(t_cube *game, int x, int y);
+void						set_rectangle(mlx_image_t *image, t_rect_data rect,
+								int color);
+void						minimap_tile(t_cube *game, int x, int y);
+void    put_player(t_cube *game);
 
 #endif
