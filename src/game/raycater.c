@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycater.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/07/04 09:50:32 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/07/06 01:05:52 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,5 @@ void	casting(t_cube *game)
 	step(game);
 	dda(game);
 	wall_height(game);
+	
 }

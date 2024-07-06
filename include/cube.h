@@ -80,15 +80,15 @@ char    					**square_map(t_info_file *info);
 void						create_background_celling(t_cube *game);
 void						background(t_cube *game);
 void						rotate_player(t_cube *game, double rot);
-t_cube					*ft_mini(t_info_file *info);
+t_cube					    *ft_mini(t_info_file *info);
 int							get_rgba(int r, int g, int b, int a);
 int							max_len(int height, char **map);
 void						set_minimap(t_cube *game);
-void						minimap_tile(t_cube *game, int x, int y);
+void	                    set_minimap_tile(t_cube *game);
 
-int							map_height(char **map);
 
 t_rect_data					init_rect(int x, int y, int w, int h);
 void						set_rectangle(mlx_image_t *image, t_rect_data rect, int color);
+void                       	minimap_tile(t_cube *game, int x, int y);
 
 #endif

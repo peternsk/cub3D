@@ -4,15 +4,20 @@
 void	game(t_info_file *info)
 {
 	t_cube	*game;
-	int x = 0;
-	int y = 0;
+	int		x;
+	int		y;
 
+	x = 0;
+	y = 0;
 	game = ft_mini(info);
-	game->background = mlx_new_image(game->mlx, game->wind_width, game->wind_height);
+	background(game);
+	set_minimap_tile(game);
+	// set_minimap(game);
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
-	// background(game);
+	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
 	// // mlx_key_hook(game->mlx, &ft_player_moves, &game);
 	mlx_loop(game->mlx);
+	printf("???????\n");
 	return ;
 }
 

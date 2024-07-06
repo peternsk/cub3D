@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/07/04 10:48:47 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/07/06 02:45:35 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,43 @@ void	set_rectangle(mlx_image_t *image, t_rect_data rect, int color)
 	}
 }
 
+void	minimap_tile(t_cube *game, int x, int y)
+{
+	if (game->map[y][x] == '1')
+	{
+		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 2, 10
+				- 2), get_rgba(255, 255, 255, 255));
+		printf("1");
+	}
+	else if (game->map[y][x] == '0')
+	{
+		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 2, 10
+				- 2), get_rgba(0, 0, 0, 255));
+		printf("0");
+	}
+	else
+	{
+		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 2, 10
+				- 2), get_rgba(100, 100, 100, 255));
+		printf("X");
+	}
+}
+void	set_minimap_tile(t_cube *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->mini_height)
+	{
+		x = 0;
+		while (x < game->mini_width)
+		{
+			minimap_tile(game, x, y);
+			x++;
+		}
+		printf("\n");
+		y++;
+	}
+	draw_player(game);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mini_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/07/04 09:21:26 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/07/06 02:45:10 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_cube	*ft_mini(t_info_file *info)
 {
 	t_cube	*game;
 
-  	game = malloc(sizeof(t_info_file));
-    if (!game)
-        return (NULL);
+	game = malloc(sizeof(t_cube));
+	if (!game)
+		return (NULL);
 	game->map = info->v_map;
 	game->player_x = info->push_p->pos_x;
 	game->player_y = info->push_p->pos_x;
@@ -51,8 +51,15 @@ t_cube	*ft_mini(t_info_file *info)
 	game->mini_width = info->width;
 	game->wind_height = WINDOW_HEIGHT;
 	game->wind_width = WINDOW_WIDTH;
-	game->mlx = mlx_init(game->wind_width, game->wind_height, "cub3D", true);;
+	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
 	if (!game->mlx)
+	{
 		printf("unable to initialize\n");
+		return (NULL);
+	}
+	game->background = mlx_new_image(game->mlx, game->wind_width,
+			game->wind_height);
+	game->minimap = mlx_new_image(game->mlx , game->mini_width * 10,
+			game->mini_height * 10);
 	return (game);
 }
