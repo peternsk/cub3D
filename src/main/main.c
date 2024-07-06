@@ -12,8 +12,10 @@ void	game(t_info_file *info)
 	game = ft_mini(info);
 	background(game);
 	set_minimap_tile(game);
+	put_player(game);
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
+	mlx_image_to_window(game->mlx, game->playr, game->player_x , game->player_y);
 	// // mlx_key_hook(game->mlx, &ft_player_moves, &game);
 	mlx_loop(game->mlx);
 	printf("???????\n");
