@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mini_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/07/06 15:53:09 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/07/07 20:04:07 by peternsaka       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_cube	*ft_mini(t_info_file *info)
 		return (NULL);
 	game->map = info->v_map;
 	game->player_x = info->push_p->pos_x;
-	game->player_y = info->push_p->pos_x;
+	game->player_y = info->push_p->pos_y;
 	game->delta_x = 0;
 	game->delta_y = 0;
 	game->player_a = 0;
