@@ -37,8 +37,7 @@ int							ft_count_line(char *file_path);
 int							ft_count_line(char *file_path);
 
 // mlx
-void						ft_player_moves(mlx_key_data_t keydata,
-								void *param);
+void						ft_player_moves(void *param);
 
 // player move
 bool						move_check(t_cube *game, int x, int y);

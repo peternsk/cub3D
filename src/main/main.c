@@ -1,24 +1,92 @@
 
 #include "cube.h"
 
-static int	map_ratio_x(double pos_x)
+// void	key_hook(t_cube *game)
+// {
+// 	mlx_t	*mlx;
+// 	// double	move_x;
+// 	// double	move_y;
+
+// 	mlx = game->mlx;
+// 	// move_x = game->mspeed * game->player_x;
+// 	// move_y = game->mspeed * game->player_y;
+// 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+// 		mlx_close_window(mlx);
+// 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+// 		move_up(game);	
+// 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+// 		move_player(game, -move_x, -move_y);
+// 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+// 		move_left(game);
+// 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+// 		move_player(game, -move_y, move_x);
+// }
+
+void 	key_hook(t_cube *game)
 {
-	t_cube	*game;
-	int		ratio_x;
+	mlx_t *mlx;
 
-	ratio_x = ((int)pos_x * (game->mini_width / game->wind_width));
-	return (ratio_x);
+	mlx = game->mlx;
+	printf("== SEG 1 ==\n");
+	printf("== MLX EXIST?: %s==\n", game->mlx?"yes":"no");
+	printf("== MLX width: %d==\n", mlx->width);
+	printf("== MLX height: %d==\n", mlx->height);
+	printf("== MLX delta_time: %f==\n", mlx->delta_time);
+	printf("== MLX VALUE: %s==\n", mlx_is_key_down(mlx, MLX_KEY_ESCAPE)?"true":"false");
+	printf("== SEG 1.1.1 ==\n");
+
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+	{
+		printf("== SEG 1.1 ==\n");
+		mlx_close_window(mlx);
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+	{
+		rotate_player(game, -0.05);
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+	{
+		rotate_player(game, 0.05);	
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+	{
+		printf("== SEG 1.4 ==\n");
+		move_up(game);	
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+	{
+		printf("== SEG 1.5 ==\n");
+		move_down(game);
+	}
+	printf("== SEG 1.done ==\n");
 }
-
-static int	map_ratio_y(double pos_y)
+void	ft_print_array(char **arr)
 {
-	t_cube	*game;
-	int		ratio_y;
+	int	i;
 
-	ratio_y = ((int)pos_y * (game->wind_height / game->mini_height));
-	return (ratio_y);
+	i = 0;
+	write(1, "[\n", 2);
+	while (arr[i])
+	{
+		write(1, "\t", 1);
+		ft_putnbr_fd(i, 2);
+		write(1, " [", 2);
+		write(1, arr[i], ft_strlen(arr[i]));
+		write(1, "]\n", 2);
+		i++;
+	}
+	write(1, "]\n", 2);
 }
+void	game_loop(void *param)
+{
+	t_cube *game;
 
+	game = param;
+	ft_print_array(game->map);
+	
+	key_hook(game);
+	set_minimap_tile(game);
+}
 void	game(t_info_file *info)
 {
 	t_cube	*game;
@@ -26,17 +94,14 @@ void	game(t_info_file *info)
 	int		y;
 
 	game = ft_mini(info);
-	x = map_ratio_x(game->player_x);
-	y = map_ratio_y(game->player_y);
 	background(game);
 	set_minimap_tile(game);
 	put_player(game);
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
-	mlx_image_to_window(game->mlx, game->playr, x, y);
-	// // mlx_key_hook(game->mlx, &ft_player_moves, &game);
+	mlx_image_to_window(game->mlx, game->playr, game->player_x * 10, game->player_y * 10);
+	mlx_loop_hook(game->mlx, game_loop, game);
 	mlx_loop(game->mlx);
-	printf("???????\n");
 	return ;
 }
 
@@ -48,5 +113,7 @@ int	main(int ac, char **av)
 		return (0);
 	info = init_info();
 	info = valide_map(av[1]);
+	if(!info)
+		return(printf("WRONG MAP INIT\n"), 0);
 	game(info);
 }

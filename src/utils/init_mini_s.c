@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/07/07 08:49:18 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/07/09 23:35:59 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_cube	*ft_mini(t_info_file *info)
 	game->map = info->v_map;
 	game->player_x = info->push_p->pos_x;
 	game->player_y = info->push_p->pos_y;
-	printf(" POS_X[%f] POS_Y[%f]\n", game->player_x, game->player_y);
 	game->delta_x = 0;
 	game->delta_y = 0;
 	game->player_a = 0;

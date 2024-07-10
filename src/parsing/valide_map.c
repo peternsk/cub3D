@@ -83,10 +83,6 @@ t_info_file	*valide_map(char *file)
 		if (info->push_p)
 		{
 			info->v_map = square_map(info);
-			// for (int i = 0;info->v_map[i] != NULL; i++)
-			// {
-			// printf("new -> %s\n", info->v_map[i]);
-			// }
 			return (info);
 		}
 	}
