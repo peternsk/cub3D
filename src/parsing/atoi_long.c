@@ -31,7 +31,7 @@ long long int	atoi_long(const char *str)
 bool    is_int(long long int nb)
 {
     if (nb < 0 || nb > 255)
-        return (err("Error\nNumber exceed 255\n"), false);
+        return (err("Error\nNumber exceed 255 or Negative number\n"), false);
     return (true);
 }
 

@@ -70,7 +70,7 @@ t_info_file *valide_map(char *file)
     info = init_info();
     info->load_files = getfile(file);
     if (last_map(info->load_files) == false)
-        return (NULL);
+        return (free_info(info), NULL);
     info->v_rgb = two_rgb(info->load_files);
     info->v_texture = four_texture(info->load_files);
     info->fake_maps = getmap(info->load_files);
@@ -88,5 +88,5 @@ t_info_file *valide_map(char *file)
             return (info);
         }
     }
-    return (NULL);
+    return (free_info(info), NULL);
 }

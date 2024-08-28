@@ -63,7 +63,7 @@ t_texture *four_texture(char   **file)
         i++;
     }
     if (less > 4)
-        return (err("Error\nMore thant four texture in the file\n"), NULL);
+        return (free_texture(four_texture), err("Error\nMore thant four texture in the file\n"), NULL);
     return (four_texture);
 }
 

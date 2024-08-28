@@ -14,15 +14,15 @@ t_rgb   *new_node(char *str)
         new = malloc(sizeof(t_rgb));
         if (new)
         {
-            new->side =  type_texture(tab[0]);
-            new->one = atoi_long(data[0]);
-            new->two = atoi_long(data[1]);
-            new->three = atoi_long(data[2]);
+            new->side =  (int)type_texture(tab[0]);
+            new->one = (int)atoi_long(data[0]);
+            new->two = (int)atoi_long(data[1]);
+            new->three = (int)atoi_long(data[2]);
             new->next = NULL;
-            return (new);
+            return (free_array(data), new);
         }
     }
-    return (NULL);
+    return (free_array(data), NULL);
 }
 void    add_rgb(t_rgb **node, char *str)
 {
@@ -63,7 +63,7 @@ t_rgb   *two_rgb(char **map)
         y++;
     }
     if (less > 2)
-        return (err("Error\nMore floor and ceiling\n"), NULL);
+        return (free_rgb(node), err("Error\nMore floor and ceiling\n"), NULL);
     return (node);
 }
 

@@ -26,8 +26,10 @@ int	main(int ac, char **av)
 	t_info_file	*info;
 
 	if (ac != 2)
-		return (err("Error\ncub3d has no arguments\n"), 0);
-	info = init_info();
+		return (err("Error\ncub3d has no arguments\n"), 2);
+	// info = init_info(); // on pas vraiment besion
 	info = valide_map(av[1]);
-	game(info);
+	if (info)
+		game(info);
+	return (2);
 }
