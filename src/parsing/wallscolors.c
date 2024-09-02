@@ -15,9 +15,9 @@ t_rgb   *new_node(char *str)
         if (new)
         {
             new->side =  type_texture(tab[0]);
-            new->one = atoi_long(data[0]);
-            new->two = atoi_long(data[1]);
-            new->three = atoi_long(data[2]);
+            new->red = atoi_long(data[0]);
+            new->green = atoi_long(data[1]);
+            new->blue = atoi_long(data[2]);
             new->next = NULL;
             return (new);
         }
@@ -28,7 +28,7 @@ void    add_rgb(t_rgb **node, char *str)
 {
     t_rgb   *new;
     t_rgb   *current;
-    
+
     new = new_node(str);
     if (new)
     {

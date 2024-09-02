@@ -8,9 +8,9 @@ RM          =	rm -rf
 INC_DIR 	= 	include
 SRCS_DIR    = 	src
 OBJS_DIR    = 	obj
-USER   = $(shell whoami)
+USER   		= $(shell whoami)
 
-GAME	    =	images ft_player_moves ft_movement background
+GAME	    =	images ft_player_moves ft_movement background raycater projector wall
 
 GARBAGE     =
 
@@ -39,8 +39,8 @@ LIBFT_INC = ${LIBFT_PATH}/include
 MLX_PATH = MLX42/build
 MLX_LIB = ${MLX_PATH}/libmlx42.a
 # Change this path for your homebrew path
-# MLX_INC = -Iinclude -lglfw -L "/opt/homebrew/Cellar/glfw/3.3.8/lib"
-MLX_INC = -Iinclude -lglfw -L "/Users/$(USER)/.brew/Cellar/glfw/3.4/lib"
+MLX_INC = -Iinclude -lglfw -L "/opt/homebrew/Cellar/glfw/3.3.8/lib"
+# MLX_INC = -Iinclude -lglfw -L "/Users/$(USER)/.brew/Cellar/glfw/3.4/lib"
 MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 
 GREEN	= \033[32;1m

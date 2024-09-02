@@ -13,7 +13,7 @@
 // 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 // 		mlx_close_window(mlx);
 // 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-// 		move_up(game);	
+// 		move_up(game);
 // 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
 // 		move_player(game, -move_x, -move_y);
 // 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
@@ -27,13 +27,13 @@ void 	key_hook(t_cube *game)
 	mlx_t *mlx;
 
 	mlx = game->mlx;
-	printf("== SEG 1 ==\n");
-	printf("== MLX EXIST?: %s==\n", game->mlx?"yes":"no");
-	printf("== MLX width: %d==\n", mlx->width);
-	printf("== MLX height: %d==\n", mlx->height);
-	printf("== MLX delta_time: %f==\n", mlx->delta_time);
-	printf("== MLX VALUE: %s==\n", mlx_is_key_down(mlx, MLX_KEY_ESCAPE)?"true":"false");
-	printf("== SEG 1.1.1 ==\n");
+	// printf("== SEG 1 ==\n");
+	// printf("== MLX EXIST?: %s==\n", game->mlx?"yes":"no");
+	// printf("== MLX width: %d==\n", mlx->width);
+	// printf("== MLX height: %d==\n", mlx->height);
+	// printf("== MLX delta_time: %f==\n", mlx->delta_time);
+	// printf("== MLX VALUE: %s==\n", mlx_is_key_down(mlx, MLX_KEY_ESCAPE)?"true":"false");
+	// printf("== SEG 1.1.1 ==\n");
 
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 	{
@@ -46,12 +46,12 @@ void 	key_hook(t_cube *game)
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
 	{
-		rotate_player(game, 0.05);	
+		rotate_player(game, 0.05);
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 	{
 		printf("== SEG 1.4 ==\n");
-		move_up(game);	
+		move_up(game);
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
 	{
@@ -82,10 +82,9 @@ void	game_loop(void *param)
 	t_cube *game;
 
 	game = param;
-	ft_print_array(game->map);
-	
+	raycast(game);
 	key_hook(game);
-	set_minimap_tile(game);
+	// set_minimap_tile(game);
 }
 void	game(t_info_file *info)
 {
@@ -94,14 +93,28 @@ void	game(t_info_file *info)
 	int		y;
 
 	game = ft_mini(info);
+	// printf("== DEBUG SEGGGGG ok ft_mini ==\n");
+	// printf(" BEFORE SEGG !!\n");
+	// load_textures(game);
+	// printf(" AFTER SEGG !\n");
 	background(game);
+	// printf("== DEBUG SEGGGGG ok background ==\n");
 	set_minimap_tile(game);
+	// printf("== DEBUG SEGGGGG ok set_minimap ==\n");
 	put_player(game);
+	// printf("== DEBUG SEGGGGG ok putplayer ==\n");
+	raycast(game);
+	// printf("== DEBUG SEGGGGG ok raycast ==\n");
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
+	// printf("== DEBUG SEGGGGG ok background mlx ==\n");
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
+	// printf("== DEBUG SEGGGGG ok minimap mlx ==\n");
 	mlx_image_to_window(game->mlx, game->playr, game->player_x * 10, game->player_y * 10);
+	// printf("== DEBUG SEGGGGG ok player mlx ==\n");
 	mlx_loop_hook(game->mlx, game_loop, game);
+	// printf("== DEBUG SEGGGGG ok game loop mlx ==\n");
 	mlx_loop(game->mlx);
+	// printf("== DEBUG SEGGGGG ok mlx loop mlx ==\n");
 	return ;
 }
 
@@ -116,4 +129,5 @@ int	main(int ac, char **av)
 	if(!info)
 		return(printf("WRONG MAP INIT\n"), 0);
 	game(info);
+	printf("== DEBUG SEGGGGG ==\n");
 }

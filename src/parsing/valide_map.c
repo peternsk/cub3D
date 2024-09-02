@@ -66,7 +66,6 @@ bool	error_map(char **map)
 t_info_file	*valide_map(char *file)
 {
 	t_info_file	*info;
-
 	if (filename(file) == false)
 		return (err("Error\nBad filename\n"), NULL);
 	info = init_info();

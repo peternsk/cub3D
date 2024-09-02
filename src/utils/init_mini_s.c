@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mini_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/07/09 23:35:59 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/01 20:41:39 by peternsaka       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ t_cube	*ft_mini(t_info_file *info)
 	game->mini_width = info->width;
 	game->wind_height = WINDOW_HEIGHT;
 	game->wind_width = WINDOW_WIDTH;
+	printf(" BEFORE SEGG !!\n");
+	load_textures(game);
+	printf(" AFTER SEGG !!\n");
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", true);
 	if (!game->mlx)
 	{
