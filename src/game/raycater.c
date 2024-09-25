@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycater.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/01 20:44:21 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/09/25 11:30:04 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	dda(t_cube *game)
 			game->side = 1;
 			printf("== DDA WHILE->ELSE ==\n");
 		}
-		if (game->map[game->map_y][game->map_x] == 1){
+		if (game->map[game->map_y][game->map_x] == 'X'){
 			printf("== DDA WHILE->BREAK ==\n");
 			break ;
 		}
@@ -112,10 +112,11 @@ void	casting(t_cube *game)
 	dist_calc(game);
 	step(game);
 	dda(game);
-	printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.0 ==\n");
 	prepare_for_drawing(game);
 	prepare_for_texture(game);
+	printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.0 ==\n");
 	draw_textured_walls(game);
+	printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.1 ==\n");
 
 }
 

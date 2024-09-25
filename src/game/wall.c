@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:37:20 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/01 20:40:15 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/09/25 11:36:50 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	prepare_for_drawing(t_cube *game)
 {
+	printf("== DEBUG SEGGGGG PREP DRAW start ==\n");
 	game->line_height = (int)(game->wind_height / game->perp_dist);
 	game->draw_start = -game->line_height / 2 + game->wind_height / 2
 		+ game->vert_view;
@@ -28,6 +29,7 @@ void	prepare_for_drawing(t_cube *game)
 	else
 		game->wall_x = game->player_x + game->perp_dist * game->ray_dx;
 	game->wall_x -= floor((game->wall_x));
+	printf("== DEBUG SEGGGGG PREP DRAW end ==\n");
 }
 
 void	prepare_for_texture(t_cube *game)
@@ -58,10 +60,16 @@ int32_t	get_texture_color(u_int8_t *pixel)
 
 void	draw_textured_walls(t_cube *game)
 {
+	printf("== DEBUG SEGGGGG PREP DRAW start ==\n");
 	game->y = 0;
 	while (game->y < game->draw_start)
 	{
-		mlx_put_pixel(game->screen, game->x, game->y, 255);
+		printf("== DEBUG SEGGGGG PREP DRAW mid 1 ==\n");
+		if(game->screen)
+			mlx_put_pixel(game->screen, game->x, game->y, 230);
+		else
+			printf("NOOOOPPPEEEE");
+		printf("== DEBUG SEGGGGG PREP DRAW mid 2 ==\n");
 		game->y++;
 	}
 	while (game->y < game->draw_end)
@@ -78,6 +86,7 @@ void	draw_textured_walls(t_cube *game)
 		mlx_put_pixel(game->screen, game->x, game->y, 255);
 		game->y++;
 	}
+	printf("== DEBUG SEGGGGG PREP DRAW end ==\n");
 }
 
 //set texture

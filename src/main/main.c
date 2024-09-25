@@ -4,12 +4,12 @@
 // void	key_hook(t_cube *game)
 // {
 // 	mlx_t	*mlx;
-// 	// double	move_x;
-// 	// double	move_y;
+// 	double	move_x;
+// 	double	move_y;
 
 // 	mlx = game->mlx;
-// 	// move_x = game->mspeed * game->player_x;
-// 	// move_y = game->mspeed * game->player_y;
+// 	move_x = game->mspeed * game->player_x;
+// 	move_y = game->mspeed * game->player_y;
 // 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 // 		mlx_close_window(mlx);
 // 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
@@ -77,6 +77,7 @@ void	ft_print_array(char **arr)
 	}
 	write(1, "]\n", 2);
 }
+
 void	game_loop(void *param)
 {
 	t_cube *game;
@@ -95,7 +96,7 @@ void	game(t_info_file *info)
 	game = ft_mini(info);
 	// printf("== DEBUG SEGGGGG ok ft_mini ==\n");
 	// printf(" BEFORE SEGG !!\n");
-	// load_textures(game);
+	load_textures(game);
 	// printf(" AFTER SEGG !\n");
 	background(game);
 	// printf("== DEBUG SEGGGGG ok background ==\n");

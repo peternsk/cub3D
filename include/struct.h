@@ -95,6 +95,8 @@ typedef struct s_cube
 	mlx_texture_t		*textures[4];
 	int					color;
 
+	double				mspeed;
+
 	double				mov_speed;
 	double				rot_speed;
 	mlx_image_t			*playr;
