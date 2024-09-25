@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/25 11:30:04 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/25 12:48:18 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ void	dda(t_cube *game)
 			game->side_dist_x += game->delta_x;
 			game->map_x += game->step_x;
 			game->side = 0;
-			printf("== DDA WHILE->IF ==\n");
+			// printf("== DDA WHILE->IF ==\n");
 		}
 		else
 		{
 			game->side_dist_y += game->delta_y;
 			game->map_y += game->step_y;
 			game->side = 1;
-			printf("== DDA WHILE->ELSE ==\n");
+			// printf("== DDA WHILE->ELSE ==\n");
 		}
 		if (game->map[game->map_y][game->map_x] == 'X'){
-			printf("== DDA WHILE->BREAK ==\n");
+			// printf("== DDA WHILE->BREAK ==\n");
 			break ;
 		}
 	}
-	printf("== DDA OUT WHILE ==\n");
+	// printf("== DDA OUT WHILE ==\n");
 	if (game->side == 0)
 		game->perp_dist = (game->side_dist_x - game->delta_x);
 	else
@@ -114,9 +114,9 @@ void	casting(t_cube *game)
 	dda(game);
 	prepare_for_drawing(game);
 	prepare_for_texture(game);
-	printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.0 ==\n");
+	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.0 ==\n");
 	draw_textured_walls(game);
-	printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.1 ==\n");
+	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.1 ==\n");
 
 }
 

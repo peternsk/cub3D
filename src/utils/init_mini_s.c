@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mini_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/09/01 20:41:39 by peternsaka       ###   ########.fr       */
+/*   Updated: 2024/09/25 13:03:48 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ t_cube	*ft_mini(t_info_file *info)
 	if (!game)
 		return (NULL);
 	game->map = info->v_map;
-	game->player_x = info->push_p->pos_x;
-	game->player_y = info->push_p->pos_y;
+	printf(" pos x: %f, pos y: %f \n", game->player_x, game->player_y);
+	game->player_x = (double)info->push_p->pos_x;
+	game->player_y = (double)info->push_p->pos_y;
+	printf(" pos x: %d, pos y: %d \n",  info->push_p->pos_x, info->push_p->pos_y);
+	printf(" pos x: %f, pos y: %f \n", game->player_x, game->player_y);
 	game->delta_x = 0;
 	game->delta_y = 0;
 	game->player_a = 0;

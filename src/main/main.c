@@ -1,65 +1,61 @@
 
 #include "cube.h"
 
-// void	key_hook(t_cube *game)
+void	key_hook(t_cube *game)
+{
+	mlx_t	*mlx;
+	double	move_x;
+	double	move_y;
+
+	mlx = game->mlx;
+	move_x = game->mspeed * game->player_x;
+	move_y = game->mspeed * game->player_y;
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+
+	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+		move_up(game);
+
+	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+		move_down(game);
+		// move_player(game, -move_x, -move_y);
+
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+		rotate_player(game, -0.05);
+		// move_left(game);
+
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+		rotate_player(game, 0.05);
+		// move_right(game);
+		// move_player(game, -move_y, move_x);
+}
+
+// void 	key_hook(t_cube *game)
 // {
-// 	mlx_t	*mlx;
-// 	double	move_x;
-// 	double	move_y;
+// 	mlx_t *mlx;
 
 // 	mlx = game->mlx;
-// 	move_x = game->mspeed * game->player_x;
-// 	move_y = game->mspeed * game->player_y;
+// 	// printf("== SEG 1 ==\n");
+// 	// printf("== MLX EXIST?: %s==\n", game->mlx?"yes":"no");
+// 	// printf("== MLX width: %d==\n", mlx->width);
+// 	// printf("== MLX height: %d==\n", mlx->height);
+// 	// printf("== MLX delta_time: %f==\n", mlx->delta_time);
+// 	// printf("== MLX VALUE: %s==\n", mlx_is_key_down(mlx, MLX_KEY_ESCAPE)?"true":"false");
+// 	// printf("== SEG 1.1.1 ==\n");
+
 // 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+// 	{
 // 		mlx_close_window(mlx);
+// 	}
+// 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+// 		rotate_player(game, -0.05);
+// 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+// 		rotate_player(game, 0.05);
 // 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 // 		move_up(game);
 // 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-// 		move_player(game, -move_x, -move_y);
-// 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-// 		move_left(game);
-// 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-// 		move_player(game, -move_y, move_x);
+// 		move_down(game);
 // }
-
-void 	key_hook(t_cube *game)
-{
-	mlx_t *mlx;
-
-	mlx = game->mlx;
-	// printf("== SEG 1 ==\n");
-	// printf("== MLX EXIST?: %s==\n", game->mlx?"yes":"no");
-	// printf("== MLX width: %d==\n", mlx->width);
-	// printf("== MLX height: %d==\n", mlx->height);
-	// printf("== MLX delta_time: %f==\n", mlx->delta_time);
-	// printf("== MLX VALUE: %s==\n", mlx_is_key_down(mlx, MLX_KEY_ESCAPE)?"true":"false");
-	// printf("== SEG 1.1.1 ==\n");
-
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-	{
-		printf("== SEG 1.1 ==\n");
-		mlx_close_window(mlx);
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-	{
-		rotate_player(game, -0.05);
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-	{
-		rotate_player(game, 0.05);
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-	{
-		printf("== SEG 1.4 ==\n");
-		move_up(game);
-	}
-	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-	{
-		printf("== SEG 1.5 ==\n");
-		move_down(game);
-	}
-	printf("== SEG 1.done ==\n");
-}
 void	ft_print_array(char **arr)
 {
 	int	i;
