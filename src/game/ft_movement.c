@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 19:17:38 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/26 13:10:54 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/26 14:09:22 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,12 @@ void	rotate_player(t_cube *game, double rot)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = game->ray_dir_x;
-	game->ray_dir_x = game->ray_dir_x * cos(rot) - game->ray_dir_y * sin(rot);
-	game->ray_dir_y = old_dir_x * sin(rot) + game->ray_dir_y * cos(rot);
-	old_plane_x = game->cam_x;
-	game->cam_x = game->cam_x * cos(rot) - game->cam_y * sin(rot);
-	game->cam_y = old_plane_x * sin(rot) + game->cam_y * cos(rot);
-
-/*
-	double oldDirX = dirX;
-    dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-    dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
-    double oldPlaneX = planeX;
-    planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-    planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
-*/
+	old_dir_x = game->dir_x;
+	game->dir_x = game->dir_x * cos(rot) - game->dir_y * sin(rot);
+	game->dir_y = old_dir_x * sin(rot) + game->dir_y * cos(rot);
+	old_plane_x = game->plane_x;
+	game->plane_x = game->plane_x * cos(rot) - game->plane_y * sin(rot);
+	game->plane_y = old_plane_x * sin(rot) + game->plane_y * cos(rot);
 	
 	printf("== DEBUG SEGGGGG ROTATE END****************************************** ==\n");
 }
