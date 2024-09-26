@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:37:20 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/25 12:48:34 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/26 12:47:58 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	draw_textured_walls(t_cube *game)
 	while (game->y < game->draw_start)
 	{
 		// printf("== DEBUG SEGGGGG PREP DRAW mid 1 ==\n");
-		mlx_put_pixel(game->background, game->x, game->y, 230);
+		mlx_put_pixel(game->background, game->x, game->y, 0);
 		// printf("== DEBUG SEGGGGG PREP DRAW mid 2 ==\n");
 		game->y++;
 	}

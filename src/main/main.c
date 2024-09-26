@@ -21,11 +21,11 @@ void	key_hook(t_cube *game)
 		// move_player(game, -move_x, -move_y);
 
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		rotate_player(game, -0.05);
+		rotate_player(game, -1.05);
 		// move_left(game);
 
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		rotate_player(game, 0.05);
+		rotate_player(game, 1.05);
 		// move_right(game);
 		// move_player(game, -move_y, move_x);
 }
