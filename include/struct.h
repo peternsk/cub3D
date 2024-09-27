@@ -78,12 +78,24 @@ typedef struct s_cube
 	int					side;
 	double				wall_dist;
 	int					line_height;
+	int					vert_view;
 	int					draw_start;
 	int					draw_end;
 	double				wall_x;
 	double				ray_dx;
 	double				ray_dy;
 	double				fov_ratio;
+
+	int					tex_x;
+	int					tex_y;
+	double				tex_pos;
+	double				tex_step;
+	int					tex_num;
+	mlx_texture_t		*tex;
+	mlx_texture_t		*textures[4];
+	int					color;
+
+	double				mspeed;
 
 	double				mov_speed;
 	double				rot_speed;
@@ -101,15 +113,19 @@ typedef struct s_texture
 	int						side;
 	char					*path;
 	struct s_texture		*next;
+	// char					*n_tex;
+	// char					*e_tex;
+	// char					*s_tex;
+	// char					*w_tex;
 }							t_texture;
 
 typedef struct s_rgb
 {
 	int						side;
 	char					*path;
-	int						one;
-	int						two;
-	int						three;
+	int						red;
+	int						green;
+	int						blue;
 	struct s_rgb			*next;
 }							t_rgb;
 
@@ -117,6 +133,10 @@ typedef struct s_info_file
 {
 	char					**v_map;
 	t_texture				*v_texture;
+	char					*n_tex;
+	char					*e_tex;
+	char					*s_tex;
+	char					*w_tex;
 	t_rgb					*v_rgb;
 	char					**load_files;
 	char					**fake_maps;

@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/07/06 01:05:52 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/26 13:12:46 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,21 @@ void	dda(t_cube *game)
 			game->side_dist_x += game->delta_x;
 			game->map_x += game->step_x;
 			game->side = 0;
+			// printf("== DDA WHILE->IF ==\n");
 		}
 		else
 		{
 			game->side_dist_y += game->delta_y;
 			game->map_y += game->step_y;
 			game->side = 1;
+			// printf("== DDA WHILE->ELSE ==\n");
 		}
-		if (game->map[game->map_y][game->map_x] == 1)
+		if (game->map[game->map_y][game->map_x] == 'X'){
+			// printf("== DDA WHILE->BREAK ==\n");
 			break ;
+		}
 	}
+	// printf("== DDA OUT WHILE ==\n");
 	if (game->side == 0)
 		game->perp_dist = (game->side_dist_x - game->delta_x);
 	else
@@ -63,11 +68,14 @@ void	dda(t_cube *game)
 
 void	dist_calc(t_cube *game)
 {
-	game->map_x = game->player_x;
-	game->map_y = game->player_y;
-
-	game->delta_x = fabs(1 / game->ray_dir_x);
-	game->delta_y = fabs(1 / game->ray_dir_y);
+	if (game->ray_dx == 0)
+		game->delta_x = 1e30;
+	else
+		game->delta_x = fabs(1 / game->ray_dir_x);
+	if (game->ray_dy == 0)
+		game->delta_y = 1e30;
+	else
+		game->delta_y = fabs(1 / game->ray_dir_y);
 }
 
 void	wall_height(t_cube *game)
@@ -97,13 +105,19 @@ void	wall_height(t_cube *game)
 void	casting(t_cube *game)
 {
 	game->fov_ratio = 2 * game->x / (double)game->wind_width - 1;
-	game->ray_dx = game->delta_x + game->cam_x * game->fov_ratio;
-	game->ray_dy = game->delta_y + game->cam_y * game->fov_ratio;
+	game->ray_dx = game->dir_x + game->cam_x * game->fov_ratio;
+	game->ray_dy = game->dir_y + game->cam_y * game->fov_ratio;
 	game->map_x = (int)game->player_x;
 	game->map_y = (int)game->player_y;
 	dist_calc(game);
 	step(game);
 	dda(game);
-	wall_height(game);
-	
+	prepare_for_drawing(game);
+	prepare_for_texture(game);
+	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.0 ==\n");
+	// draw_textured_walls(game);
+	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.1 ==\n");
+
 }
+
+

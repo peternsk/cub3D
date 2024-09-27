@@ -8,9 +8,9 @@ RM          =	rm -rf
 INC_DIR 	= 	include
 SRCS_DIR    = 	src
 OBJS_DIR    = 	obj
-USER   = $(shell whoami)
+USER   		= $(shell whoami)
 
-GAME	    =	images ft_player_moves ft_movement background
+GAME	    =	images ft_player_moves ft_movement background raycater projector wall
 
 GARBAGE     =
 

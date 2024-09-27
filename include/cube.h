@@ -37,8 +37,7 @@ int							ft_count_line(char *file_path);
 int							ft_count_line(char *file_path);
 
 // mlx
-void						ft_player_moves(mlx_key_data_t keydata,
-								void *param);
+void						ft_player_moves(void *param);
 
 // player move
 bool						move_check(t_cube *game, int x, int y);
@@ -95,6 +94,20 @@ t_rect_data					init_rect(int x, int y, int w, int h);
 void						set_rectangle(mlx_image_t *image, t_rect_data rect,
 								int color);
 void						minimap_tile(t_cube *game, int x, int y);
+
+void				load_textures(t_cube *game);
+mlx_texture_t		*load_png(char *path);
+
 void    put_player(t_cube *game);
+void	prepare_for_drawing(t_cube *game);
+void	prepare_for_texture(t_cube *game);
+void	draw_textured_walls(t_cube *game);
+int32_t	get_texture_color(u_int8_t *pixel);
+void	casting(t_cube *game);
+void	wall_height(t_cube *game);
+void	dist_calc(t_cube *game);
+void	dda(t_cube *game);
+void 	step(t_cube *game);
+void	raycast(t_cube *game);
 
 #endif

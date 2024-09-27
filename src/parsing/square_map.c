@@ -58,7 +58,7 @@ char	**map(t_info_file *info)
 		return (NULL);
 	while (info->v_map[i])
 	{
-		square[i] = ft_change_space(info->v_map[i], info->width, 'v');
+		square[i] = ft_change_space(info->v_map[i], info->width, 'X');
 		i++;
 	}
 	square[i] = NULL;

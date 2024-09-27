@@ -14,10 +14,10 @@ t_rgb   *new_node(char *str)
         new = malloc(sizeof(t_rgb));
         if (new)
         {
-            new->side =  (int)type_texture(tab[0]);
-            new->one = (int)atoi_long(data[0]);
-            new->two = (int)atoi_long(data[1]);
-            new->three = (int)atoi_long(data[2]);
+            new->side =  type_texture(tab[0]);
+            new->red = atoi_long(data[0]);
+            new->green = atoi_long(data[1]);
+            new->blue = atoi_long(data[2]);
             new->next = NULL;
             return (free_array(data), new);
         }
@@ -28,7 +28,7 @@ void    add_rgb(t_rgb **node, char *str)
 {
     t_rgb   *new;
     t_rgb   *current;
-    
+
     new = new_node(str);
     if (new)
     {
