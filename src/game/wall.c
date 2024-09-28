@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:37:20 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/26 12:47:58 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/28 17:40:03 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	prepare_for_drawing(t_cube *game)
 {
 	// printf("== DEBUG SEGGGGG PREP DRAW start ==\n");
-	game->line_height = (int)(game->wind_height / game->perp_dist);
-	game->draw_start = -game->line_height / 2 + game->wind_height / 2
+	game->line_height = (int)(game->wind_height / (int)game->perp_dist);
+	 game->draw_start = -game->line_height / 2 + game->wind_height / 2
 		+ game->vert_view;
 	if (game->draw_start < 0)
 		game->draw_start = 0;
