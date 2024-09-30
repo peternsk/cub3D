@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycater.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/26 20:59:09 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/09/26 21:13:09 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,8 @@ void castingPrintf(t_cube *game){
 
 void	casting(t_cube *game)
 {
-	game->fov_ratio = 2 * game->x / (double)game->wind_width - 1;
+	castingPrintf(game);
+	game->fov_ratio = 2 * game->x / (double)game->wind_width;
 	game->ray_dx = game->dir_x + game->cam_x * game->fov_ratio;
 	game->ray_dy = game->dir_y + game->cam_y * game->fov_ratio;
 	game->map_x = (int)game->player_x;
@@ -184,7 +185,7 @@ void	casting(t_cube *game)
 	prepare_for_drawing(game);
 	prepare_for_texture(game);
 	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.0 ==\n");
-	// draw_textured_walls(game);
+	draw_textured_walls(game);
 	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.1 ==\n");
 
 }

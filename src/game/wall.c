@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:37:20 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/26 12:47:58 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/26 21:31:47 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,12 @@ int32_t	get_texture_color(u_int8_t *pixel)
 void	draw_textured_walls(t_cube *game)
 {
 	// printf("== DEBUG SEGGGGG PREP DRAW start ==\n");
-	game->y = 0;
-	while (game->y < game->draw_start)
-	{
-		// printf("== DEBUG SEGGGGG PREP DRAW mid 1 ==\n");
-		mlx_put_pixel(game->background, game->x, game->y, 0);
-		// printf("== DEBUG SEGGGGG PREP DRAW mid 2 ==\n");
-		game->y++;
-	}
+	// game->y = 0;
+	// while (game->y < game->draw_start)
+	// {
+	// 	mlx_put_pixel(game->background, game->x, game->y, get_rgba(0,0,0,1));
+	// 	game->y++;
+	// } 
 	while (game->y < game->draw_end)
 	{
 		game->tex_y = (int)game->tex_pos;
@@ -78,12 +76,11 @@ void	draw_textured_walls(t_cube *game)
 		mlx_put_pixel(game->background, game->x, game->y, game->color);
 		game->y++;
 	}
-	while (game->y < game->wind_height)
-	{
-		mlx_put_pixel(game->background, game->x, game->y, 255);
-		game->y++;
-	}
-	// printf("== DEBUG SEGGGGG PREP DRAW end ==\n");
+	// while (game->y < game->wind_height)
+	// {
+	// 	mlx_put_pixel(game->background, game->x, game->y,  get_rgba(0,0,0,1));
+	// 	game->y++;
+	// }
 }
 
 //set texture
