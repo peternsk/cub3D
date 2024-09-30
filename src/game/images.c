@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/07/08 12:20:43 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:31:07 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ void	minimap_tile(t_cube *game, int x, int y)
 	{
 		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 1,
 				10 - 1), get_rgba(255, 255, 255, 255));
-		printf("1");
+		// printf("1");
 	}
 	else if (game->map[y][x] == '0' || game->map[y][x] == 'N' || game->map[y][x] == 'S' || game->map[y][x] == 'W' || game->map[y][x] == 'E' )
 	{
 		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 1,
 				10 - 1), get_rgba(0, 0, 0, 255));
-		printf("0");
+		// printf("0");
 	}
 	else
 	{
 		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 1,
 				10 - 1), get_rgba(100, 100, 100, 255));
-		printf("X");
+		// printf("X");
 	}
 }
 

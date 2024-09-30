@@ -73,14 +73,33 @@ void	ft_print_array(char **arr)
 	}
 	write(1, "]\n", 2);
 }
+// void castingPrintf(t_cube *game){
+// 	printf("===================== casting function====================\n");
+// 	printf("fov_ratio	: %f\n", game->fov_ratio);
+// 	printf("dir_x		: %f\n", game->dir_x);
+// 	printf("dir_y		: %f\n", game->dir_y);
+// 	printf("map_y		: %d\n", game->map_y);
+// 	printf("player_x	: %f\n" , game->player_x);
+// 	printf("player_y	: %f\n", game->player_y);
+// 	printf("cam_x		: %f\n", game->cam_x);
+// 	printf("cam_y		: %f\n", game->cam_y);
+// 	printf("game->x		: %d\n", game->x);
+// 	printf("===================== casting end====================\n");
+// }
 
 void	game_loop(void *param)
 {
 	t_cube *game;
 
 	game = param;
-	raycast(game);
-	key_hook(game);
+	if (game)
+	{
+		// printf("Game loop\n");
+		raycast(game);
+		// castingPrintf(game);
+		key_hook(game);
+	}else
+		printf("NULL as hell\n");
 	// set_minimap_tile(game);
 }
 void	game(t_info_file *info)
@@ -104,13 +123,21 @@ void	game(t_info_file *info)
 	// printf("== DEBUG SEGGGGG ok raycast ==\n");
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
 	// printf("== DEBUG SEGGGGG ok background mlx ==\n");
+	mlx_image_to_window(game->mlx, game->rayc_screen, 0, 0);
+	// printf("== DEBUG SEGGGGG ok ray mlx ==\n");
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
 	// printf("== DEBUG SEGGGGG ok minimap mlx ==\n");
 	mlx_image_to_window(game->mlx, game->playr, game->player_x * 10, game->player_y * 10);
 	// printf("== DEBUG SEGGGGG ok player mlx ==\n");
 	mlx_loop_hook(game->mlx, game_loop, game);
+	// void *param = (void *)game;
+	// mlx_loop_hook(game->mlx, game_loop(game), game);
 	// printf("== DEBUG SEGGGGG ok game loop mlx ==\n");
-	mlx_loop(game->mlx);
+	if (game->mlx)
+		mlx_loop(game->mlx);
+	else
+		printf("is not good\n");
+	mlx_terminate(game->mlx);
 	// printf("== DEBUG SEGGGGG ok mlx loop mlx ==\n");
 	return ;
 }

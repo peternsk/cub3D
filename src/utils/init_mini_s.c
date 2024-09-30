@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/09/25 13:03:48 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:44:23 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ t_cube	*ft_mini(t_info_file *info)
 	printf(" pos x: %f, pos y: %f \n", game->player_x, game->player_y);
 	game->delta_x = 0;
 	game->delta_y = 0;
+	game->dir_x = 1;
+	game->dir_y = 0;
+	game->plane_x = 0;
+	game->wind_height = WINDOW_HEIGHT;
+	game->wind_width = WINDOW_WIDTH;
+	game->plane_y = 0.5 * ((double)game->wind_width / (double)game->wind_height);
 	game->player_a = 0;
 	game->mini_height = info->height;
 	game->mini_width = info->width;
-	game->wind_height = WINDOW_HEIGHT;
-	game->wind_width = WINDOW_WIDTH;
 	printf(" BEFORE SEGG !!\n");
 	load_textures(game);
 	printf(" AFTER SEGG !!\n");
@@ -64,6 +68,8 @@ t_cube	*ft_mini(t_info_file *info)
 		return (NULL);
 	}
 	game->background = mlx_new_image(game->mlx, game->wind_width,
+			game->wind_height);
+	game->rayc_screen = mlx_new_image(game->mlx, game->wind_width,
 			game->wind_height);
 	game->minimap = mlx_new_image(game->mlx , game->mini_width * 10,
 			game->mini_height * 10);

@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:37:20 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/26 21:31:47 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:59:57 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	prepare_for_drawing(t_cube *game)
 {
 	// printf("== DEBUG SEGGGGG PREP DRAW start ==\n");
-	game->line_height = (int)(game->wind_height / game->perp_dist);
+	game->line_height = (int)(game->wind_height / (int)game->perp_dist);
 	game->draw_start = -game->line_height / 2 + game->wind_height / 2
 		+ game->vert_view;
 	if (game->draw_start < 0)
@@ -25,11 +25,32 @@ void	prepare_for_drawing(t_cube *game)
 	if (game->draw_end >= game->wind_height)
 		game->draw_end = game->wind_height - 1;
 	if (game->side == 0)
+	{
+		// printf("game->wall_x  		: %f\n", game->wall_x);	
+		// printf("game->player_y		: %f\n", game->player_y);	
+		// printf("game->ray_dy		: %f\n", game->ray_dy);	
+		// printf("game->perp_dist     : %f\n", game->perp_dist);
 		game->wall_x = game->player_y + game->perp_dist * game->ray_dy;
+	}
 	else
 		game->wall_x = game->player_x + game->perp_dist * game->ray_dx;
 	game->wall_x -= floor((game->wall_x));
 	// printf("== DEBUG SEGGGGG PREP DRAW end ==\n");
+	// void castingPrintf(t_cube *game){
+	printf("===================== casting function====================\n");
+	printf("game->line_height	: %d\n", game->line_height);
+	printf("game->draw_start    : %d\n", game->draw_start);
+	printf("game->vert_view     : %d\n", game->vert_view);
+	printf("game->perp_dist     : %f\n", game->perp_dist);
+	printf("game->draw_end      : %d\n" , game->draw_end);
+	printf("game->side          : %d\n", game->side);
+	printf("game->wall_x        : %f\n", game->wall_x);
+	printf("game->wind_height  : %f\n", game->wind_height);
+	printf("===================== casting end====================\n");
+	// printf("game->wall_x  		: %f\n", game->wall_x);	
+	// printf("game->player_y		: %f\n", game->player_y);	
+	// printf("game->ray_dy		: %f\n", game->ray_dy);	
+	// printf("game->perp_dist     : %f\n", game->perp_dist);
 }
 
 void	prepare_for_texture(t_cube *game)
@@ -60,27 +81,36 @@ int32_t	get_texture_color(u_int8_t *pixel)
 
 void	draw_textured_walls(t_cube *game)
 {
-	// printf("== DEBUG SEGGGGG PREP DRAW start ==\n");
-	// game->y = 0;
-	// while (game->y < game->draw_start)
-	// {
-	// 	mlx_put_pixel(game->background, game->x, game->y, get_rgba(0,0,0,1));
-	// 	game->y++;
-	// } 
+	// printf("== DEBUG SEGGGGG DRAW start ==\n");
+	// printf("== DRAW START 	: %d ==\n", game->draw_start);
+	// printf("== DRAW END   	: %d ==\n", game->draw_end);
+	// printf("== WIND HEIGHT  : %d ==\n", game->wind_height);
+	game->y = 0;
+	while (game->y < game->draw_start)
+	{
+		mlx_put_pixel(game->rayc_screen, game->x, game->y, get_rgba(0,0,0,1));
+		game->y++;
+	} 
+	set_minimap_tile(game);
 	while (game->y < game->draw_end)
 	{
 		game->tex_y = (int)game->tex_pos;
 		game->tex_pos += game->tex_step;
 		game->color = get_texture_color(&game->tex->pixels[(game->tex->width
 					* game->tex_y + (game->tex->width - game->tex_x - 1)) * 4]);
-		mlx_put_pixel(game->background, game->x, game->y, game->color);
+		mlx_put_pixel(game->rayc_screen, game->x, game->y, game->color);
 		game->y++;
 	}
 	// while (game->y < game->wind_height)
 	// {
-	// 	mlx_put_pixel(game->background, game->x, game->y,  get_rgba(0,0,0,1));
+	// 	mlx_put_pixel(game->rayc_screen, game->x, game->y,  get_rgba(0,0,0,1));
 	// 	game->y++;
 	// }
+	// printf("== DEBUG SEGGGGG DRAW end ==\n");
+	// printf("== DRAW START 	: %d ==\n", game->draw_start);
+	// printf("== DRAW END   	: %d ==\n", game->draw_end);
+	// printf("== WIND HEIGHT  : %d ==\n", game->wind_height);
+	// printf("== WIND HEIGHT  : %d ==\n", game->wind_height);
 }
 
 //set texture
