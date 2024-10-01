@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/30 15:06:35 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/01 15:29:51 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void ddaPrintf(t_cube *game)
 	printf("=====================dda end====================\n");
 }
 
-
 void	dda(t_cube *game)
 {
 	while (1)
@@ -92,16 +91,10 @@ void	dda(t_cube *game)
 			break ;
 		}
 	}
-	// printf("== DDA OUT WHILE ==\n");
 	if (game->side == 0)
 		game->perp_dist = (game->side_dist_x - game->delta_x);
 	else
 		game->perp_dist = (game->side_dist_y - game->delta_y);
-		// ddaPrintf(game);
-	printf("game->side_dist_x : %f\n", game->side_dist_x);
-	printf("game->delta_x     : %f\n", game->delta_x);
-	printf("game->side_dist_y : %f\n", game->side_dist_y);
-	printf("game->delta_y     : %f\n", game->delta_y);
 }
 void dist_calcPrintf(t_cube *game)
 {	
@@ -118,11 +111,11 @@ void	dist_calc(t_cube *game)
 	if (game->ray_dx == 0)
 		game->delta_x = 1e30;
 	else
-		game->delta_x = fabs(1 / game->ray_dir_x);
+		game->delta_x = fabs(1 / game->ray_dx);
 	if (game->ray_dy == 0)
 		game->delta_y = 1e30;
 	else
-		game->delta_y = fabs(1 / game->ray_dir_y);
+		game->delta_y = fabs(1 / game->ray_dy);
 	// dist_calcPrintf(game);
 }
 
@@ -148,11 +141,7 @@ void	wall_height(t_cube *game)
 	else
 		game->wall_dist = ((double)game->map_y - game->player_y + (1 - (double)game->step_y) / 2) / game->ray_dir_y;
 
-	// game->line_height = (int)(WINDOW_HEIGHT / game->wall_dist);
 	game->line_height = (int)(WINDOW_HEIGHT / game->wall_dist);
-	// printf("wall_dist	: %f\n", game->wall_dist);
-	// game->line_height = (int)(WINDOW_HEIGHT / game->perp_dist);
-	// printf("perp_dist	: %f\n", game->perp_dist);
 
 	game->draw_start = -game->line_height / 2 + WINDOW_HEIGHT / 2;
 	if (game->draw_start < 0)
@@ -167,7 +156,6 @@ void	wall_height(t_cube *game)
 	else
 		game->wall_x = game->player_x + game->wall_dist * game->ray_dx;
 	game->wall_x -= floor(game->wall_x);
-	// wall_heightPrintf(game);
 }
 void castingPrintf(t_cube *game){
 	printf("===================== casting function====================\n");

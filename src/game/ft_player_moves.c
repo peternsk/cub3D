@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 10:58:42 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/07/09 23:31:25 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/01 15:37:50 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_player_moves(void *param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		rotate_player(game, -0.05);
+		rotate_player(game, -1);
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		rotate_player(game, 0.05);
+		rotate_player(game, 1);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 		move_up(game);	
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
