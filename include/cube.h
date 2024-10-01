@@ -110,4 +110,14 @@ void	dda(t_cube *game);
 void 	step(t_cube *game);
 void	raycast(t_cube *game);
 
+t_point     init_point(int x, int y);
+void    init_lh_point(t_lh_point *line_data, t_point *p1, t_point *p2);
+void	draw_line(mlx_image_t *img, t_point p1, t_point p2, int color);
+void set_tile_size(t_cube *rc);
+void	draw_player_triangle(t_cube *rc, int color);
+void	draw_player(t_cube *rc);
+void	draw_triangle(mlx_image_t *image, t_point points[3], uint32_t color);
+
+
+
 #endif

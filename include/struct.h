@@ -38,6 +38,24 @@ typedef struct s_load_pos
 	int						y;
 }							t_load_pos;
 
+typedef struct s_point
+{
+	int x;
+	int y;
+} 				t_point;
+
+
+typedef struct s_lh_point
+{
+	int	sx;
+	int	sy;
+	int dx;
+	int dy;
+	int x;
+	int y;
+	int err;
+	int e2;
+}			t_lh_point;
 
 typedef struct s_cube
 {
@@ -53,6 +71,10 @@ typedef struct s_cube
 
 	int					x;
 	int					y;
+
+	int					tile_size_x;
+	int					tile_size_y;
+	int					tile_size;
 
 	double				player_x;
 	double				delta_x;

@@ -94,10 +94,10 @@ void	game_loop(void *param)
 	game = param;
 	if (game)
 	{
-		// printf("Game loop\n");
+		set_minimap(game);
 		raycast(game);
-		// castingPrintf(game);
 		key_hook(game);
+		draw_player(game);
 	}else
 		printf("NULL as hell\n");
 	// set_minimap_tile(game);
@@ -109,36 +109,19 @@ void	game(t_info_file *info)
 	int		y;
 
 	game = ft_mini(info);
-	// printf("== DEBUG SEGGGGG ok ft_mini ==\n");
-	// printf(" BEFORE SEGG !!\n");
 	load_textures(game);
-	// printf(" AFTER SEGG !\n");
 	background(game);
-	// printf("== DEBUG SEGGGGG ok background ==\n");
 	set_minimap_tile(game);
-	// printf("== DEBUG SEGGGGG ok set_minimap ==\n");
-	put_player(game);
-	// printf("== DEBUG SEGGGGG ok putplayer ==\n");
+	// put_player(game);
+	// draw_player(game);
 	raycast(game);
-	// printf("== DEBUG SEGGGGG ok raycast ==\n");
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
-	// printf("== DEBUG SEGGGGG ok background mlx ==\n");
 	mlx_image_to_window(game->mlx, game->rayc_screen, 0, 0);
-	// printf("== DEBUG SEGGGGG ok ray mlx ==\n");
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
-	// printf("== DEBUG SEGGGGG ok minimap mlx ==\n");
 	mlx_image_to_window(game->mlx, game->playr, game->player_x * 10, game->player_y * 10);
-	// printf("== DEBUG SEGGGGG ok player mlx ==\n");
 	mlx_loop_hook(game->mlx, game_loop, game);
-	// void *param = (void *)game;
-	// mlx_loop_hook(game->mlx, game_loop(game), game);
-	// printf("== DEBUG SEGGGGG ok game loop mlx ==\n");
-	if (game->mlx)
-		mlx_loop(game->mlx);
-	else
-		printf("is not good\n");
+	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
-	// printf("== DEBUG SEGGGGG ok mlx loop mlx ==\n");
 	return ;
 }
 

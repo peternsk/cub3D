@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/09/30 14:31:07 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/01 17:04:14 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ void	set_minimap_tile(t_cube *game)
 		printf("\n");
 		y++;
 	}
+	draw_player(game);
 }

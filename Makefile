@@ -10,7 +10,7 @@ SRCS_DIR    = 	src
 OBJS_DIR    = 	obj
 USER   		= $(shell whoami)
 
-GAME	    =	images ft_player_moves ft_movement background raycater projector wall
+GAME	    =	images ft_player_moves ft_movement background raycater projector wall  drawplayer
 
 GARBAGE     =
 
