@@ -1,6 +1,14 @@
 
 #include "cube.h"
 
+static void	move_player(t_cube *rc, double move_x, double move_y)
+{
+	if (rc->map[(int)rc->player_y][(int)(rc->player_x + move_x)] == '0')
+		rc->player_x += move_x;
+	if (rc->map[(int)(rc->player_y + move_y)][(int)rc->player_x] == '0')
+		rc->player_y += move_y;
+}
+
 void	key_hook(t_cube *game)
 {
 	mlx_t	*mlx;
@@ -12,50 +20,16 @@ void	key_hook(t_cube *game)
 	move_y = game->mspeed * game->player_y;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		move_up(game);
-
+		move_player(game, move_x, -move_y);
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		move_down(game);
-		// move_player(game, -move_x, -move_y);
-
+		move_player(game, -move_x, move_y);
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		rotate_player(game, -1.05);
-		// move_left(game);
-
+		rotate_player(game, -0.05);
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		rotate_player(game, 1.05);
-		// move_right(game);
-		// move_player(game, -move_y, move_x);
+		rotate_player(game, 0.05);
 }
 
-// void 	key_hook(t_cube *game)
-// {
-// 	mlx_t *mlx;
-
-// 	mlx = game->mlx;
-// 	// printf("== SEG 1 ==\n");
-// 	// printf("== MLX EXIST?: %s==\n", game->mlx?"yes":"no");
-// 	// printf("== MLX width: %d==\n", mlx->width);
-// 	// printf("== MLX height: %d==\n", mlx->height);
-// 	// printf("== MLX delta_time: %f==\n", mlx->delta_time);
-// 	// printf("== MLX VALUE: %s==\n", mlx_is_key_down(mlx, MLX_KEY_ESCAPE)?"true":"false");
-// 	// printf("== SEG 1.1.1 ==\n");
-
-// 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-// 	{
-// 		mlx_close_window(mlx);
-// 	}
-// 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-// 		rotate_player(game, -0.05);
-// 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-// 		rotate_player(game, 0.05);
-// 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-// 		move_up(game);
-// 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-// 		move_down(game);
-// }
 void	ft_print_array(char **arr)
 {
 	int	i;
@@ -94,9 +68,9 @@ void	game_loop(void *param)
 	game = param;
 	if (game)
 	{
+		key_hook(game);
 		set_minimap(game);
 		raycast(game);
-		key_hook(game);
 		draw_player(game);
 	}else
 		printf("NULL as hell\n");
@@ -113,12 +87,11 @@ void	game(t_info_file *info)
 	background(game);
 	set_minimap_tile(game);
 	// put_player(game);
-	// draw_player(game);
+	draw_player(game);
 	raycast(game);
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
 	mlx_image_to_window(game->mlx, game->rayc_screen, 0, 0);
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);
-	mlx_image_to_window(game->mlx, game->playr, game->player_x * 10, game->player_y * 10);
 	mlx_loop_hook(game->mlx, game_loop, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);

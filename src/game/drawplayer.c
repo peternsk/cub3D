@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:21:34 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/01 17:08:33 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/09 13:45:31 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,13 @@ void set_tile_size(t_cube *rc)
         rc->tile_size = -1;
 }
 
+void	draw_triangle(mlx_image_t *image, t_point points[3], uint32_t color)
+{
+	draw_line(image, points[0], points[1], color);
+	draw_line(image, points[1], points[2], color);
+	draw_line(image, points[2], points[0], color);
+}
+
 // Draws a triangle as the player on the minimap.
 void	draw_player_triangle(t_cube *rc, int color)
 {
@@ -100,12 +107,6 @@ void	draw_player(t_cube *rc)
 			* (rc->tile_size), rc->player_y * rc->tile_size + rc->dir_y * (rc->tile_size)), get_rgba(255, 76, 48, 1));
 }
 
-void	draw_triangle(mlx_image_t *image, t_point points[3], uint32_t color)
-{
-	draw_line(image, points[0], points[1], color);
-	draw_line(image, points[1], points[2], color);
-	draw_line(image, points[2], points[0], color);
-}
 
 
 

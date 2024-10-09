@@ -121,7 +121,6 @@ typedef struct s_cube
 
 	double				mov_speed;
 	double				rot_speed;
-	mlx_image_t			*playr;
 	mlx_image_t			*background;
 	mlx_image_t			*rayc_screen;
 	mlx_image_t			*minimap;

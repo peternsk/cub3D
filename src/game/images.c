@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/01 17:04:14 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/09 14:13:15 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,6 @@ void	minimap_tile(t_cube *game, int x, int y)
 	}
 }
 
-void	put_player(t_cube *game)
-{
-	// ft_memset(game->playr->pixels, get_rgba(0, 0, 0, 255), game->playr->width * game->playr->height * sizeof(int32_t));
-	set_rectangle(game->playr, init_rect(game->plane_x, game->plane_y, game->playr->width, game->playr->height), get_rgba(255, 0, 0, 255));
-}
-
 void	set_minimap_tile(t_cube *game)
 { 
 	int x;
@@ -83,7 +77,6 @@ void	set_minimap_tile(t_cube *game)
 			minimap_tile(game, x, y);
 			x++;
 		}
-		printf("\n");
 		y++;
 	}
 	draw_player(game);
