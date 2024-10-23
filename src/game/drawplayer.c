@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:21:34 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/09 13:45:31 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/22 23:00:39 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	draw_triangle(mlx_image_t *image, t_point points[3], uint32_t color)
 	draw_line(image, points[0], points[1], color);
 	draw_line(image, points[1], points[2], color);
 	draw_line(image, points[2], points[0], color);
+
 }
 
 // Draws a triangle as the player on the minimap.
@@ -95,16 +96,36 @@ void	draw_player_triangle(t_cube *rc, int color)
 			rc->player_y * rc->tile_size + rc->dir_y * (rc->tile_size / 2));
 	points[2] = init_point(rc->player_x * rc->tile_size + rc->dir_y * (rc->tile_size / 4),
 			rc->player_y * rc->tile_size - rc->dir_x * (rc->tile_size / 4));
+	
+	// printf("*********draw_player_triangle*******\n");
+	// printf("player x	: %f \n", rc->player_x);
+	// printf("player y	: %f \n", rc->player_y);
+	// printf("tile size	: %d \n", rc->tile_size);
+	// printf("dir x		: %f \n", rc->dir_x);
+	// printf("dir y		: %f \n", rc->dir_y);
+	// printf("************************************\n");
+
+	
 	draw_triangle(rc->minimap, points, color);
 }
 
 // Draws the player on the minimap with a direction vector.
 void	draw_player(t_cube *rc)
 {
-	draw_player_triangle(rc, get_rgba(240, 255, 0, 1));
+	
+	draw_player_triangle(rc,YELLOW);
 	draw_line(rc->minimap, init_point(rc->player_x * rc->tile_size, rc->player_y
 			* rc->tile_size), init_point(rc->player_x * rc->tile_size + rc->dir_x
-			* (rc->tile_size), rc->player_y * rc->tile_size + rc->dir_y * (rc->tile_size)), get_rgba(255, 76, 48, 1));
+			* (rc->tile_size), rc->player_y * rc->tile_size + rc->dir_y * (rc->tile_size)), RED);
+			
+	// printf("*************draw_player************\n");
+	// printf("player x	: %f \n", rc->player_x);
+	// printf("player y	: %f \n", rc->player_y);
+	// printf("tile size	: %d \n", rc->tile_size);
+	// printf("dir x		: %f \n", rc->dir_x);
+	// printf("dir y		: %f \n", rc->dir_y);
+	// printf("************************************\n");
+	
 }
 
 

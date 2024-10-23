@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/10/01 15:29:51 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/23 13:23:19 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,9 +189,8 @@ void	casting(t_cube *game)
 	wall_height(game);
 	prepare_for_texture(game);
 	prepare_for_drawing(game);
-	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.0 ==\n");
 	draw_textured_walls(game);
-	// printf("== DEBUG SEGGGGG RAYCAST->CASTING 1.1 ==\n");
+
 }
 
 

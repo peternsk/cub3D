@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:37:20 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/10/01 15:47:12 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/23 00:56:49 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ void	draw_textured_walls(t_cube *game)
 	game->y = 0;
 	while (game->y < game->draw_start)
 	{
-		mlx_put_pixel(game->rayc_screen, game->x, game->y, get_rgba(0,0,0,1));
+		mlx_put_pixel(game->rayc_screen, game->x, game->y, TRANSPARENT);
 		game->y++;
 	} 
-	set_minimap_tile(game);
 	while (game->y < game->draw_end)
 	{
 		game->tex_y = (int)game->tex_pos;
@@ -79,7 +78,7 @@ void	draw_textured_walls(t_cube *game)
 	}
 	while (game->y < game->wind_height)
 	{
-		mlx_put_pixel(game->rayc_screen, game->x, game->y,  get_rgba(0,0,0,1));
+		mlx_put_pixel(game->rayc_screen, game->x, game->y,  TRANSLUCENT);
 		game->y++;
 	}
 }

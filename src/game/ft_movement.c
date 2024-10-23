@@ -6,14 +6,14 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 19:17:38 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/10/09 14:15:28 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/22 08:18:16 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 void	rotate_player(t_cube *game, double rot)
-{
+{ 
 	
 	double	old_dir_x;
 	double	old_plane_x;

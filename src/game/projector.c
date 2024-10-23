@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projector.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:53:11 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/09/28 17:38:36 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2024/10/22 08:12:23 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	raycast(t_cube *game)
 	game->x = 0;
 	while (game->x < game->wind_width)
 	{
-	// 	// printf("== DEBUG SEGGGGG RAYCAST 1.%d ==\n", game->x);
 		casting(game);
-	// 	// printf("== DEBUG SEGGGGG RAYCAST 1.2 ==\n");
 		game->x++;
 	}
 	

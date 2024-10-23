@@ -6,11 +6,32 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 00:44:22 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/09 14:35:52 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/22 09:33:25 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+static double	degree_to_radian(int a)
+{
+	return (a * M_PI / 180.0);
+}
+
+static void	init_player_position(t_cube *rc, t_info_file *game_info)
+{
+	rc->player_x = (double)game_info->push_p->pos_x + 0.5;
+	rc->player_y = (double)game_info->push_p->pos_y + 0.5;
+	rc->dir_x = 1;
+	rc->dir_y = 0;
+	if (game_info->push_p->side == nord)
+		rotate_player(rc, degree_to_radian(-90));
+	else if (game_info->push_p->side == east)
+		rotate_player(rc, degree_to_radian(0));
+	else if (game_info->push_p->side == south)
+		rotate_player(rc, degree_to_radian(90));
+	else if (game_info->push_p->side == west)
+		rotate_player(rc, degree_to_radian(180));
+}
 
 int	ft_count_line(char *file_path)
 {
@@ -42,26 +63,23 @@ t_cube	*ft_mini(t_info_file *info)
 	if (!game)
 		return (NULL);
 	game->map = info->v_map;
-	printf(" pos x: %f, pos y: %f \n", game->player_x, game->player_y);
-	game->player_x = (double)info->push_p->pos_x;
-	game->player_y = (double)info->push_p->pos_y;
-	printf(" pos x: %d, pos y: %d \n",  info->push_p->pos_x, info->push_p->pos_y);
-	printf(" pos x: %f, pos y: %f \n", game->player_x, game->player_y);
+	game->player_x = (double)info->push_p->pos_x + 0.5;
+	game->player_y = (double)info->push_p->pos_y + 0.5;
+	game->wind_height = WINDOW_HEIGHT;
+	game->wind_width = WINDOW_WIDTH;
+	game->mini_height = info->height;
+	game->mini_width = info->width;
+	set_tile_size(game);
+	init_player_position(game, info);
 	game->delta_x = 0;
 	game->delta_y = 0;
 	game->dir_x = 1;
 	game->dir_y = 0;
 	game->mspeed = 0.05;
 	game->plane_x = 0;
-	game->wind_height = WINDOW_HEIGHT;
-	game->wind_width = WINDOW_WIDTH;
 	game->plane_y = 0.5 * ((double)game->wind_width / (double)game->wind_height);
 	game->player_a = 0;
-	game->mini_height = info->height;
-	game->mini_width = info->width;
-	printf(" BEFORE SEGG !!\n");
 	load_textures(game);
-	printf(" AFTER SEGG !!\n");
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", true);
 	if (!game->mlx)
 	{
