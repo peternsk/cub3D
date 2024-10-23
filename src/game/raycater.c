@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 19:39:40 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/10/23 13:23:19 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/23 14:58:48 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	dda(t_cube *game)
 		game->perp_dist = (game->side_dist_x - game->delta_x);
 	else
 		game->perp_dist = (game->side_dist_y - game->delta_y);
+	// draw_line(game->minimap, init_point(game->player_x * game->tile_size, game->player_y * game->tile_size), init_point((game->map_x + game->player_x) * game->tile_size,  (game->map_y + game->player_y) * game->tile_size), LIGHT_ORANGE);
 }
 void dist_calcPrintf(t_cube *game)
 {	
@@ -116,7 +117,6 @@ void	dist_calc(t_cube *game)
 		game->delta_y = 1e30;
 	else
 		game->delta_y = fabs(1 / game->ray_dy);
-	// dist_calcPrintf(game);
 }
 
 void wall_heightPrintf(t_cube *game){

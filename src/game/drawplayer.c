@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:21:34 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/22 23:00:39 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/23 15:01:02 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,46 +86,29 @@ void	draw_triangle(mlx_image_t *image, t_point points[3], uint32_t color)
 }
 
 // Draws a triangle as the player on the minimap.
-void	draw_player_triangle(t_cube *rc, int color)
+void	draw_player_triangle(t_cube *game, int color)
 {
 	t_point	points[3];
 
-	points[0] = init_point(rc->player_x * rc->tile_size - rc->dir_y * (rc->tile_size / 4),
-			rc->player_y * rc->tile_size + rc->dir_x * (rc->tile_size / 4));
-	points[1] = init_point(rc->player_x * rc->tile_size + rc->dir_x * (rc->tile_size / 2),
-			rc->player_y * rc->tile_size + rc->dir_y * (rc->tile_size / 2));
-	points[2] = init_point(rc->player_x * rc->tile_size + rc->dir_y * (rc->tile_size / 4),
-			rc->player_y * rc->tile_size - rc->dir_x * (rc->tile_size / 4));
+	points[0] = init_point(game->player_x * game->tile_size - game->dir_y * (game->tile_size / 4),
+			game->player_y * game->tile_size + game->dir_x * (game->tile_size / 4));
+	points[1] = init_point(game->player_x * game->tile_size + game->dir_x * (game->tile_size / 2),
+			game->player_y * game->tile_size + game->dir_y * (game->tile_size / 2));
+	points[2] = init_point(game->player_x * game->tile_size + game->dir_y * (game->tile_size / 4),
+			game->player_y * game->tile_size - game->dir_x * (game->tile_size / 4));
 	
-	// printf("*********draw_player_triangle*******\n");
-	// printf("player x	: %f \n", rc->player_x);
-	// printf("player y	: %f \n", rc->player_y);
-	// printf("tile size	: %d \n", rc->tile_size);
-	// printf("dir x		: %f \n", rc->dir_x);
-	// printf("dir y		: %f \n", rc->dir_y);
-	// printf("************************************\n");
-
-	
-	draw_triangle(rc->minimap, points, color);
+	draw_triangle(game->minimap, points, color);
 }
 
 // Draws the player on the minimap with a direction vector.
-void	draw_player(t_cube *rc)
+void	draw_player(t_cube *game)
 {
 	
-	draw_player_triangle(rc,YELLOW);
-	draw_line(rc->minimap, init_point(rc->player_x * rc->tile_size, rc->player_y
-			* rc->tile_size), init_point(rc->player_x * rc->tile_size + rc->dir_x
-			* (rc->tile_size), rc->player_y * rc->tile_size + rc->dir_y * (rc->tile_size)), RED);
-			
-	// printf("*************draw_player************\n");
-	// printf("player x	: %f \n", rc->player_x);
-	// printf("player y	: %f \n", rc->player_y);
-	// printf("tile size	: %d \n", rc->tile_size);
-	// printf("dir x		: %f \n", rc->dir_x);
-	// printf("dir y		: %f \n", rc->dir_y);
-	// printf("************************************\n");
-	
+	draw_player_triangle(game,YELLOW);
+	draw_line(game->minimap, init_point(game->player_x * game->tile_size, game->player_y
+			* game->tile_size), init_point(game->player_x * game->tile_size + game->dir_x
+			* (game->tile_size), game->player_y * game->tile_size + game->dir_y * (game->tile_size)), RED);
+	draw_line(game->minimap, init_point(game->player_x * game->tile_size, game->player_y * game->tile_size), init_point((game->map_x + game->player_x) * game->tile_size,  (game->map_y + game->player_y) * game->tile_size), LIGHT_ORANGE);
 }
 
 

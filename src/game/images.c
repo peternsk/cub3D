@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/22 10:01:13 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/23 15:00:11 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ void	minimap_tile(t_cube *game, int x, int y)
 {
 	if (game->map[y][x] == '1')
 	{
-		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 1,
-				10 - 1), WHITE);
+		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 -1,
+				10 -1), WHITE);
 	}
 	else if (game->map[y][x] == '0' || game->map[y][x] == 'N' || game->map[y][x] == 'S' || game->map[y][x] == 'W' || game->map[y][x] == 'E' )
 	{
-		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 1,
-				10 - 1), DARK_GRAY);
+		set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 -1,
+				10 -1), DARK_GRAY);
 	}
 	// else
 	// {
-	// 	set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10 - 1,
-	// 			10 - 1), BLACK);
+	// 	set_rectangle(game->minimap, init_rect(x * 10 + 1, y * 10 + 1, 10,
+	// 			10), BLACK);
 	// }
 }
 
