@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:08:03 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/23 15:00:11 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/24 14:16:34 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,21 @@ void	set_minimap_tile(t_cube *game)
 	int y;
 
 	y = 0;
+	// printf("HERE \n");
 	while (y < game->mini_height)
 	{
+		// printf("HERE IN WHILE 1 \n");
 		x = 0;
 		while (x < game->mini_width)
 		{
+			// printf("HERE IN WHILE 2 \n");
 			minimap_tile(game, x, y);
 			x++;
 		}
+		// printf("HERE OUT WHILE 2 \n");
 		y++;
 	}
-	draw_player(game);
+	// printf("HERE OUT FUNC \n");
+	// draw_player(game);
+	// printf("HERE OUT DRAW PLAYER FUNC \n");
 }

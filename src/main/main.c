@@ -3,18 +3,18 @@
 
 static void	move_player(t_cube *game, double move_x, double move_y)
 {
-	printf("IN MOVE PLAYER \n");
+	// printf("IN MOVE PLAYER \n");
 	if (game->map[(int)game->player_y][(int)(game->player_x + move_x)] != '1')
 	{
 		game->player_x += move_x;
-		printf("player x	:%f \n", game->player_x);
+		// printf("player x	:%f \n", game->player_x);
 	}
 	if (game->map[(int)(game->player_y + move_y)][(int)game->player_x] != '1')
 	{
 		game->player_y += move_y;
-		printf("player y	:%f \n", game->player_y);
+		// printf("player y	:%f \n", game->player_y);
 	}
-	printf("OUT MOVE PLAYER \n");
+	// printf("OUT MOVE PLAYER \n");
 }
 
 
@@ -32,12 +32,12 @@ void	key_hook(t_cube *game)
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 	{
 		move_player(game, move_x, move_y);
-		printf("IN KEY UP\n");
+		// printf("IN KEY UP\n");
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
 	{
 		move_player(game, -move_x, -move_y);
-		printf("IN KEY DOWN\n");
+		// printf("IN KEY DOWN\n");
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
 		rotate_player(game, -0.05);
@@ -87,12 +87,11 @@ void	game_loop(void *param)
 		key_hook(game);
 		raycast(game);
 		set_minimap_tile(game);
-		// draw_player(game);
+		draw_player(game);
 	}else
 		printf("NULL as hell\n");
-	// set_minimap_tile(game);
 }
-void	game(t_info_file *info)
+void	 game(t_info_file *info)
 {
 	t_cube	*game;
 
@@ -100,7 +99,6 @@ void	game(t_info_file *info)
 	load_textures(game);
 	background(game);
 	raycast(game);
-	set_minimap_tile(game);
 	mlx_image_to_window(game->mlx, game->background, 0, 0);
 	mlx_image_to_window(game->mlx, game->rayc_screen, 0, 0);
 	mlx_image_to_window(game->mlx, game->minimap, 0, 0);

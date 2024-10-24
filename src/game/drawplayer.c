@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:21:34 by pnsaka            #+#    #+#             */
-/*   Updated: 2024/10/23 15:01:02 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/24 14:15:31 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,17 @@ void	draw_player_triangle(t_cube *game, int color)
 // Draws the player on the minimap with a direction vector.
 void	draw_player(t_cube *game)
 {
-	
+	// printf("DRAW PLAYER\n");
 	draw_player_triangle(game,YELLOW);
+	// printf("DRAW PLAYER 1\n");
 	draw_line(game->minimap, init_point(game->player_x * game->tile_size, game->player_y
 			* game->tile_size), init_point(game->player_x * game->tile_size + game->dir_x
 			* (game->tile_size), game->player_y * game->tile_size + game->dir_y * (game->tile_size)), RED);
-	draw_line(game->minimap, init_point(game->player_x * game->tile_size, game->player_y * game->tile_size), init_point((game->map_x + game->player_x) * game->tile_size,  (game->map_y + game->player_y) * game->tile_size), LIGHT_ORANGE);
+	draw_line(game->minimap, init_point(game->player_x * game->tile_size,
+			game->player_y * game->tile_size), 
+			init_point((game->map_x + game->player_x) * game->tile_size, 
+			(game->map_y + game->player_y) * game->tile_size), 
+			LIGHT_ORANGE);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:53:11 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/10/22 08:12:23 by pnsaka           ###   ########.fr       */
+/*   Updated: 2024/10/24 14:23:32 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	raycast(t_cube *game)
 	while (game->x < game->wind_width)
 	{
 		casting(game);
+		draw_player(game);
 		game->x++;
 	}
 	

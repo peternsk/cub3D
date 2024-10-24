@@ -112,8 +112,8 @@ typedef struct s_cube
 	int					tile_size;
 
 	double				player_x;
-	double				delta_x;
 	double				player_y;
+	double				delta_x;
 	double				delta_y;
 	double				player_a;
 	double				ray_dir_x;
@@ -129,8 +129,8 @@ typedef struct s_cube
 	int					step_y;
 	double 				side_dist_x;
 	double 				side_dist_y;
-	int					map_x;
-	int					map_y;
+	double					map_x;
+	double					map_y;
 	double				perp_dist;
 	int					side;
 	double				wall_dist;
