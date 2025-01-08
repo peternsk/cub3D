@@ -1,7 +1,7 @@
-SO ./textures/minecraft/diamond.png
-NO ./textures/minecraft/grass.png
-WE ./textures/minecraft/bale.png
-EA ./textures/minecraft/sandstone.png
+SO ./textures/images_rec/diamond.png
+NO ./textures/images_rec/grass.png
+WE ./textures/images_rec/bale.png
+EA ./textures/images_rec/sandstone.png
 
 F 0,102,0
 C 0,70,200

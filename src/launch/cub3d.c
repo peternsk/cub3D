@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peternsaka <peternsaka@student.42.fr>      +#+  +:+       +#+        */
+/*   By: pnsaka <pnsaka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:50:47 by peternsaka        #+#    #+#             */
-/*   Updated: 2024/12/30 14:50:48 by peternsaka       ###   ########.fr       */
+/*   Updated: 2025/01/08 13:50:01 by pnsaka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,7 @@ void	game_loop(void *param)
 	raycast(rc);
 }
 
-/**
- * @brief  Uses the game_info datas to initialize the screen(floor, ceiling,
-		   textures) + raycaster data & draw the minimap.
- * @note   Thanks to the Codam's MLX42
- * @param  *game_info:
- * @retval None
- */
+
 void	cub3d(t_game_info *game_info)
 {
 	t_raycaster_data	rc;

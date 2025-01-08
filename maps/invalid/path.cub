@@ -1,7 +1,7 @@
 WE ./wtf/grass.png
-NO ./textures/minecraft/blackstone.png
-SO ./textures/minecraft/bale.png
-EA ./textures/minecraft/sandstone.png
+NO ./textures/images_rec/blackstone.png
+SO ./textures/images_rec/bale.png
+EA ./textures/images_rec/sandstone.png
 
 
 F 220,100,0
